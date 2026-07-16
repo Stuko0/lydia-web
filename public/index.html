@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lydia Agent</title>
+  <style>
+    body {
+      background: #232136;
+      color: #e0def4;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .loader {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #393552;
+      border-top-color: #c4a7e7;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: #2a273f;
+      padding: 24px 32px;
+      border-radius: 16px;
+      border: 1px solid #393552;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="loader"></div>
+    <p>Redirecting to <span id="lang-display">the right language</span>…</p>
+  </div>
+  <script>
+    (function() {
+      var langs = navigator.languages || [navigator.language];
+      var supported = ['en', 'es', 'it'];
+      var lang = 'en';
+      for (var i = 0; i < langs.length; i++) {
+        var code = langs[i].slice(0, 2);
+        if (supported.indexOf(code) !== -1) { lang = code; break; }
+      }
+      // Determine base path
+      var scripts = document.getElementsByTagName('script');
+      var base = '';
+      try { base = new URL(scripts[0].src).pathname.replace(/\/[^\/]*$/, '/').replace(/\/+$/, ''); } catch(e) {}
+      if (!base) base = window.location.pathname.replace(/\/+$/, '');
+      var dest = base + '/' + lang + '/';
+      document.getElementById('lang-display').textContent = lang.toUpperCase();
+      window.location.href = dest;
+    })();
+  </script>
+</body>
+</html>
