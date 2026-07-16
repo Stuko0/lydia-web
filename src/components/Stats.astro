@@ -5,57 +5,70 @@ export interface Props {
   langs: string;
 }
 const { stars, version, langs } = Astro.props;
+const stats = [
+  { value: stars, label: "GitHub Stars" },
+  { value: version, label: "Latest Version" },
+  { value: langs, label: "Languages" },
+];
 ---
 
 <section class="stats-section">
   <div class="mx-auto max-w-7xl px-6">
-    <div class="grid gap-px overflow-hidden rounded-2xl border border-rpm-highlight-med/40 bg-rpm-highlight-med/40 sm:grid-cols-3">
-      <div class="stat-item">
-        <span class="stat-number" data-target={stars}>0</span>
-        <span class="stat-label">GitHub Stars</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">{version}</span>
-        <span class="stat-label">Latest Version</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number" data-target={langs}>0</span>
-        <span class="stat-label">Languages</span>
-      </div>
+    <div class="stats-grid">
+      {stats.map((stat) => (
+        <div class="stat-item">
+          <span class="stat-number" data-target={stat.label === "Latest Version" ? undefined : stat.value} data-version={stat.label === "Latest Version" ? stat.value : undefined}>{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
-<script>
-  const section = document.querySelector('.stats-section');
-  if (section) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          section.querySelectorAll('.stat-number[data-target]').forEach((el) => {
-            const target = parseInt(el.getAttribute('data-target') || '0', 10);
-            const duration = 1500;
-            const start = performance.now();
-            const animate = (now: number) => {
-              const progress = Math.min((now - start) / duration, 1);
-              const eased = 1 - Math.pow(1 - progress, 4);
-              el.textContent = Math.floor(eased * target).toString();
-              if (progress < 1) requestAnimationFrame(animate);
-            };
-            requestAnimationFrame(animate);
-          });
-          observer.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    observer.observe(section);
-  }
+<script is:inline>
+  (function() {
+    document.querySelectorAll('.stats-section').forEach((section) => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.querySelectorAll('.stat-number[data-target]').forEach((el) => {
+              const target = parseInt(el.getAttribute('data-target') || '0', 10);
+              const duration = 1500;
+              const start = performance.now();
+              const animate = (now) => {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 4);
+                el.textContent = Math.floor(eased * target).toString();
+                if (progress < 1) requestAnimationFrame(animate);
+              };
+              requestAnimationFrame(animate);
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      observer.observe(section);
+    });
+  })();
 </script>
 
 <style>
   .stats-section {
     background: linear-gradient(180deg, var(--color-rpm-base) 0%, rgba(42, 39, 63, 0.6) 100%);
     padding: 5rem 0;
+  }
+  .stats-grid {
+    display: grid;
+    gap: 1px;
+    overflow: hidden;
+    border-radius: 1rem;
+    border: 1px solid var(--color-rpm-highlight-med);
+    background: var(--color-rpm-highlight-med);
+  }
+  @media (min-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
   .stat-item {
     display: flex;
@@ -85,10 +98,5 @@ const { stars, version, langs } = Astro.props;
     color: var(--color-rpm-subtle);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-  }
-  @media (min-width: 640px) {
-    .stat-item:not(:last-child) {
-      border-right: 1px solid var(--color-rpm-highlight-med);
-    }
   }
 </style>
