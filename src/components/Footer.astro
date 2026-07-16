@@ -1,0 +1,47 @@
+---
+import { GitBranch, MessageSquare, Heart, Sparkles } from "lucide-react";
+import { getT } from "../i18n.server";
+
+const lng = (Astro.currentLocale ?? "es") as "es" | "en" | "it";
+const t = getT(lng);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-rpm-highlight-low/60 bg-rpm-surface/50 py-12">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div class="space-y-4">
+        <a href={`/${lng}`} class="flex items-center gap-2.5">
+          <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-rpm-iris/40 bg-rpm-base text-rpm-iris shadow-[0_0_20px_-6px_var(--color-rpm-iris)]">
+            <Sparkles className="h-5 w-5" />
+          </span>
+          <span class="font-display text-lg tracking-wide text-rpm-text">Lydia Agent</span>
+        </a>
+        <p class="max-w-xs text-sm leading-relaxed text-rpm-muted">{t.hero?.description ?? "El agente que crece contigo."}</p>
+      </div>
+      <div class="space-y-4">
+        <h4 class="font-display text-sm uppercase tracking-widest text-rpm-subtle">{t.footer?.links ?? "Enlaces"}</h4>
+        <ul class="space-y-2 text-sm text-rpm-muted">
+          <li><a href={`/${lng}/features`} class="transition-colors hover:text-rpm-iris">{t.nav.features}</a></li>
+          <li><a href={`/${lng}/docs`} class="transition-colors hover:text-rpm-iris">{t.nav.docs}</a></li>
+          <li><a href="https://github.com/Stuko0/lydia-agent" target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-rpm-iris">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h4 class="font-display text-sm uppercase tracking-widest text-rpm-subtle">{t.footer?.community ?? "Comunidad"}</h4>
+        <div class="flex gap-3">
+          <a href="https://github.com/Stuko0/lydia-agent" target="_blank" rel="noopener noreferrer" class="flex h-10 w-10 items-center justify-center rounded-full border border-rpm-highlight-med/40 bg-rpm-base text-rpm-subtle transition hover:border-rpm-iris hover:text-rpm-iris">
+            <GitBranch className="h-4 w-4" />
+          </a>
+          <a href="#" class="flex h-10 w-10 items-center justify-center rounded-full border border-rpm-highlight-med/40 bg-rpm-base text-rpm-subtle transition hover:border-rpm-iris hover:text-rpm-iris">
+            <MessageSquare className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-rpm-highlight-low/40 pt-8 text-xs text-rpm-muted md:flex-row">
+      <span>© {year} Lydia Agent. MIT License.</span>
+      <span class="flex items-center gap-1.5">{t.footer?.madeWith ?? "Hecho con"} <Heart className="h-3 w-3 text-rpm-love" /> {t.footer?.by ?? "por"} Stuko0</span>
+    </div>
+  </div>
+</footer>

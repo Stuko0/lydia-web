@@ -1,0 +1,91 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Funzionalit\u00e0",
+    "docs": "Docs",
+    "github": "GitHub",
+    "install": "Installa"
+  },
+  "hero": {
+    "badge": "Open Source \u2022 MIT License",
+    "title": "L'agente che cresce con te",
+    "description": "Lydia Agent \u00e8 la tua compagna per codice, creativit\u00e0 e caos controllato. Ispirata al mondo di Alice e ai cuori oscuri che nascondono segreti.",
+    "terminal": "Terminale"
+  },
+  "platforms": {
+    "title": "Scarica per il tuo sistema",
+    "subtitle": "Disponibile ovunque ne hai bisogno.",
+    "macos": "macOS",
+    "macosSub": "12+",
+    "windows": "Windows",
+    "windowsSub": "10/11",
+    "linux": "Linux",
+    "linuxSub": "Qualsiasi distro",
+    "install": "Installa"
+  },
+  "featurePreview": {
+    "badge": "Anteprima",
+    "title": "Vive ovunque, ricorda tutto.",
+    "description": "Dal terminale al desktop, Lydia esegue task, conserva memoria e si integra con i tuoi strumenti preferiti.",
+    "ctaFeatures": "Vedi funzionalit\u00e0",
+    "ctaDocs": "Leggi docs",
+    "slides": {
+      "memory": "Memoria persistente",
+      "automation": "Automazione fulminea",
+      "browse": "Web e browser",
+      "sandbox": "Sandbox sicuro",
+      "creative": "Scintille creative",
+      "schedule": "Task programmati"
+    }
+  },
+  "featuresGrid": {
+    "title": "Stregata dalla produttivit\u00e0",
+    "subtitle": "Ogni isola Astro idrata solo ci\u00f2 che serve, con animazioni che non spezzano l'incantesimo."
+  },
+  "features": {
+    "persistentMemory": "Memoria persistente",
+    "persistentMemoryDesc": "Lydia memorizza fatti, preferenze e contesto di progetto usando skill di memoria e note strutturate.",
+    "webBrowse": "Navigazione web",
+    "webBrowseDesc": "Apri siti, estrai dati, interagisci con form e verifica i risultati in tempo reale.",
+    "creative": "Creativit\u00e0 assistita",
+    "creativeDesc": "Genera arte ASCII, diagrammi, musica, copy e codice con un suo stile.",
+    "scheduled": "Task programmati",
+    "scheduledDesc": "Crea cron job, promemoria e pipeline che continuano a girare mentre riposi.",
+    "sandbox": "Sandboxing sicuro",
+    "sandboxDesc": "Ogni subagent lavora in un contesto isolato per evitare conflitti e rischi.",
+    "astroIslands": "Astro Islands",
+    "astroIslandsDesc": "Idratazione selettiva: animazioni e interattivit\u00e0 solo dove servono.",
+    "cli": "CLI nativo",
+    "cliDesc": "Controlla l'intero agente dal terminale con un set di comandi coerente e veloce.",
+    "integrations": "Integrazioni",
+    "integrationsDesc": "Collega Telegram, Discord, email, smart home, GitHub e altro tramite skill.",
+    "contextual": "Conversazioni contestuali",
+    "contextualDesc": "Mantiene il contesto multi-turn tra le sessioni per risposte continue e consapevoli.",
+    "audio": "Audio e voce",
+    "audioDesc": "Text-to-speech, memo vocali, generazione musicale e analisi audio inclusi.",
+    "visual": "Design visivo",
+    "visualDesc": "Genera immagini, diagrammi, arte ASCII e artefatti web curati su richiesta.",
+    "code": "Codice di qualit\u00e0",
+    "codeDesc": "Scrivi, revisiona, refactorizza e testa codice in pi\u00f9 linguaggi e framework."
+  },
+  "docs": {
+    "badge": "Documentazione",
+    "title": "Documentazione",
+    "subtitle": "Impara a installare, configurare ed estendere Lydia Agent.",
+    "onThisPage": "In questa pagina",
+    "install": "Installazione",
+    "cli": "Comandi CLI",
+    "config": "Configurazione",
+    "skills": "Skills",
+    "quickstart": "Avvio rapido",
+    "provider": "Provider di modello",
+    "gateway": "Configurazione gateway",
+    "cron": "Cron job"
+  },
+  "footer": {
+    "links": "Link",
+    "community": "Comunit\u00e0",
+    "madeWith": "Fatto con",
+    "by": "da"
+  }
+}

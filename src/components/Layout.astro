@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/cinzel/400.css";
+import "@fontsource/cinzel/600.css";
+import { ClientRouter } from "astro:transitions";
+import { Navigation } from "./Navigation";
+import Footer from "./Footer.astro";
+import { getT } from "../i18n.server";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const lng = Astro.currentLocale ?? "es";
+const pathWithoutLng = Astro.url.pathname.replace(/^\/(es|en|it)/, "") || "/";
+const t = getT(lng as "es" | "en" | "it");
+const desc = description ?? t.hero.description;
+const navLabels = {
+  home: t.nav.home,
+  features: t.nav.features,
+  docs: t.nav.docs,
+  github: t.nav.github,
+  install: t.nav.install,
+};
+---
+
+<!doctype html>
+<html lang={lng} data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={desc} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body class="min-h-screen noise">
+    <Navigation client:load currentPath={pathWithoutLng} lng={lng} labels={navLabels} />
+    <main class="pt-16" transition:animate="slide">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

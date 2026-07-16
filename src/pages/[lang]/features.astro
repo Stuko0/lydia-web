@@ -1,0 +1,63 @@
+---
+import Layout from "../../components/Layout.astro";
+import { FloatingOrbs } from "../../components/FloatingOrbs";
+import { ScrollReveal } from "../../components/ScrollReveal";
+import { FeatureCard } from "../../components/FeatureCard";
+import { Sparkles } from "lucide-react";
+import { getT } from "../../i18n.server";
+
+export const getStaticPaths = () => [{ params: { lang: "es" } }, { params: { lang: "en" } }, { params: { lang: "it" } }];
+
+const lng = (Astro.currentLocale ?? "es") as "es" | "en" | "it";
+const t = getT(lng);
+
+const allFeatures = [
+  { iconName: "Brain" as const, title: t.features.persistentMemory, desc: t.features.persistentMemoryDesc, color: "iris" as const },
+  { iconName: "Eye" as const, title: t.features.webBrowse, desc: t.features.webBrowseDesc, color: "foam" as const },
+  { iconName: "Heart" as const, title: t.features.creative, desc: t.features.creativeDesc, color: "love" as const },
+  { iconName: "Clock" as const, title: t.features.scheduled, desc: t.features.scheduledDesc, color: "gold" as const },
+  { iconName: "Shield" as const, title: t.features.sandbox, desc: t.features.sandboxDesc, color: "pine" as const },
+  { iconName: "Sparkles" as const, title: t.features.astroIslands, desc: t.features.astroIslandsDesc, color: "rose" as const },
+  { iconName: "Terminal" as const, title: t.features.cli, desc: t.features.cliDesc, color: "iris" as const },
+  { iconName: "Globe" as const, title: t.features.integrations, desc: t.features.integrationsDesc, color: "foam" as const },
+  { iconName: "MessageSquare" as const, title: t.features.contextual, desc: t.features.contextualDesc, color: "love" as const },
+  { iconName: "Music" as const, title: t.features.audio, desc: t.features.audioDesc, color: "gold" as const },
+  { iconName: "Palette" as const, title: t.features.visual, desc: t.features.visualDesc, color: "rose" as const },
+  { iconName: "Code" as const, title: t.features.code, desc: t.features.codeDesc, color: "pine" as const },
+];
+
+const title = `${t.nav.features} — Lydia Agent`;
+---
+
+<Layout title={title}>
+  <section class="relative overflow-hidden border-b border-rpm-highlight-low/60 bg-rpm-base py-28">
+    <FloatingOrbs client:load />
+    <div class="absolute inset-0 -z-10 mask-radial-fade bg-[radial-gradient(ellipse_at_top,_var(--color-rpm-love)_0%,_transparent_50%)] opacity-20" aria-hidden></div>
+    <div class="relative mx-auto max-w-4xl px-6 text-center">
+      <ScrollReveal client:visible>
+        <div class="inline-flex items-center gap-2 rounded-full border border-rpm-love/30 bg-rpm-love/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-rpm-love">
+          <Sparkles className="h-3.5 w-3.5" />
+          {t.featurePreview.badge}
+        </div>
+      </ScrollReveal>
+      <ScrollReveal client:visible delay={0.1}>
+        <h1 class="mt-6 font-display text-5xl leading-tight text-rpm-text sm:text-6xl text-balance">{t.nav.features}</h1>
+      </ScrollReveal>
+      <ScrollReveal client:visible delay={0.2}>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-rpm-subtle">
+          {t.featuresGrid.subtitle}
+        </p>
+      </ScrollReveal>
+    </div>
+  </section>
+
+  <section class="bg-rpm-surface/20 py-24">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {allFeatures.map((f, i) => (
+          <FeatureCard client:visible title={f.title} description={f.desc} iconName={f.iconName} color={f.color} index={i} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
