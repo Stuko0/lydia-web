@@ -1,0 +1,41 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+  lang: string;
+  pathname: string;
+}
+
+const { title, description, image = "/og-image.png", type = "website", lang, pathname } = Astro.props;
+const canonical = `https://lydia-agent.stuko.dev${pathname}`;
+---
+
+<link rel="canonical" href={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={`https://lydia-agent.stuko.dev${image}`} />
+<meta property="og:locale" content={lang === "es" ? "es_ES" : lang === "it" ? "it_IT" : "en_US"} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={`https://lydia-agent.stuko.dev${image}`} />
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Lydia Agent",
+  description,
+  url: canonical,
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "macOS, Windows, Linux",
+  softwareVersion: "0.1.0",
+  license: "https://opensource.org/licenses/MIT",
+  author: {
+    "@type": "Person",
+    name: "Stuko0"
+  },
+  codeRepository: "https://github.com/Stuko0/lydia-agent"
+})} />

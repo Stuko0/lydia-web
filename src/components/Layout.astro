@@ -8,14 +8,16 @@ import "@fontsource/cinzel/600.css";
 import { ClientRouter } from "astro:transitions";
 import { Navigation } from "./Navigation";
 import Footer from "./Footer.astro";
+import SEO from "./SEO.astro";
 import { getT } from "../i18n.server";
 
 interface Props {
   title: string;
   description?: string;
+  image?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 const lng = Astro.currentLocale ?? "es";
 const pathWithoutLng = Astro.url.pathname.replace(/^\/(es|en|it)/, "") || "/";
 const t = getT(lng as "es" | "en" | "it");
@@ -38,6 +40,7 @@ const navLabels = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <SEO title={title} description={desc} image={image} lang={lng} pathname={Astro.url.pathname} />
     <ClientRouter />
   </head>
   <body class="min-h-screen noise">

@@ -1,35 +1,33 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Brain, Zap, Globe, Shield, Sparkles, Clock } from "lucide-react";
 
-const slidesData = [
-  { icon: Brain, key: "memory", color: "#c4a7e7" },
-  { icon: Zap, key: "automation", color: "#f6c177" },
-  { icon: Globe, key: "browse", color: "#9ccfd8" },
-  { icon: Shield, key: "sandbox", color: "#eb6f92" },
-  { icon: Sparkles, key: "creative", color: "#ea9a97" },
-  { icon: Clock, key: "schedule", color: "#3e8fb0" },
+const slides = [
+  { key: "memory", Icon: Brain, color: "#c4a7e7" },
+  { key: "automation", Icon: Zap, color: "#f6c177" },
+  { key: "browse", Icon: Globe, color: "#9ccfd8" },
+  { key: "sandbox", Icon: Shield, color: "#eb6f92" },
+  { key: "creative", Icon: Sparkles, color: "#ea9a97" },
+  { key: "schedule", Icon: Clock, color: "#3e8fb0" },
 ];
 
-const titles: Record<string, string> = {
-  memory: "Persistent memory",
-  automation: "Lightning automation",
-  browse: "Web & browser",
-  sandbox: "Secure sandbox",
-  creative: "Creative sparks",
-  schedule: "Scheduled tasks",
-};
+interface RotatingCardProps {
+  slidesText: { title: string; desc: string }[];
+}
 
-export function RotatingCard() {
+export function RotatingCard({ slidesText }: RotatingCardProps) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % slidesData.length), 4000);
+    const id = setInterval(() => setIndex((i) => (i + 1) % slides.length), 4000);
     return () => clearInterval(id);
   }, []);
 
-  const slide = slidesData[index];
-  const Icon = slide.icon;
+  const slide = slides[index];
+  const Icon = slide.Icon;
+  const text = slidesText[index];
 
   return (
     <div className="relative mx-auto w-full max-w-md">
@@ -38,7 +36,7 @@ export function RotatingCard() {
         <div className="mb-6 flex items-center justify-between">
           <span className="text-xs font-medium uppercase tracking-widest text-rpm-muted">Feature Preview</span>
           <div className="flex gap-1.5">
-            {slidesData.map((_, i) => (
+            {slides.map((_, i) => (
               <button
                 key={i}
                 aria-label={`Slide ${i + 1}`}
@@ -61,7 +59,8 @@ export function RotatingCard() {
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-current/20 bg-rpm-base/60" style={{ color: slide.color }}>
               <Icon className="h-7 w-7" />
             </div>
-            <h3 className="font-display text-2xl text-rpm-text">{titles[slide.key]}</h3>
+            <h3 className="font-display text-2xl text-rpm-text">{text.title}</h3>
+            <p className="text-sm text-rpm-subtle">{text.desc}</p>
           </motion.div>
         </AnimatePresence>
       </div>

@@ -30,10 +30,11 @@ export function FeatureCard({ title, description, iconName, color, index = 0 }: 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative overflow-hidden rounded-2xl border bg-rpm-surface/60 p-6 backdrop-blur-sm transition-all hover:shadow-xl ${colorMap[color]}`}
+      whileHover={{ y: -6, transition: { duration: 0.25 } }}
+      className={`group relative overflow-hidden rounded-2xl border bg-rpm-surface/60 p-6 backdrop-blur-sm transition-shadow hover:shadow-xl ${colorMap[color]}`}
     >
       <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-current opacity-5 blur-3xl transition-opacity group-hover:opacity-10" />
-      <div className="mb-4 inline-flex rounded-xl border border-current/20 bg-rpm-base/60 p-3">
+      <div className="mb-4 inline-flex rounded-xl border border-current/20 bg-rpm-base/60 p-3 transition-transform duration-300 group-hover:scale-110">
         <Icon className="h-6 w-6" />
       </div>
       <h3 className="font-display text-xl text-rpm-text">{title}</h3>

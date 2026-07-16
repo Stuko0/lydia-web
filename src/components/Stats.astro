@@ -1,0 +1,94 @@
+---
+export interface Props {
+  stars: string;
+  version: string;
+  langs: string;
+}
+const { stars, version, langs } = Astro.props;
+---
+
+<section class="stats-section">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="grid gap-px overflow-hidden rounded-2xl border border-rpm-highlight-med/40 bg-rpm-highlight-med/40 sm:grid-cols-3">
+      <div class="stat-item">
+        <span class="stat-number" data-target={stars}>0</span>
+        <span class="stat-label">GitHub Stars</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">{version}</span>
+        <span class="stat-label">Latest Version</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-target={langs}>0</span>
+        <span class="stat-label">Languages</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector('.stats-section');
+  if (section) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          section.querySelectorAll('.stat-number[data-target]').forEach((el) => {
+            const target = parseInt(el.getAttribute('data-target') || '0', 10);
+            const duration = 1500;
+            const start = performance.now();
+            const animate = (now: number) => {
+              const progress = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 4);
+              el.textContent = Math.floor(eased * target).toString();
+              if (progress < 1) requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    observer.observe(section);
+  }
+</script>
+
+<style>
+  .stats-section {
+    background: linear-gradient(180deg, var(--color-rpm-base) 0%, rgba(42, 39, 63, 0.6) 100%);
+    padding: 5rem 0;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2.5rem 1rem;
+    background: var(--color-rpm-base);
+    transition: background 0.3s ease;
+  }
+  .stat-item:hover {
+    background: var(--color-rpm-surface);
+  }
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--color-rpm-iris), var(--color-rpm-foam));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-rpm-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  @media (min-width: 640px) {
+    .stat-item:not(:last-child) {
+      border-right: 1px solid var(--color-rpm-highlight-med);
+    }
+  }
+</style>
