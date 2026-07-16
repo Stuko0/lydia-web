@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  items: { q: string; a: string }[];
+}
+
+const { title, subtitle, items } = Astro.props;
+---
+
+<section class="overflow-hidden border-t border-rpm-highlight-low/60 bg-rpm-surface/40 py-24">
+  <div class="mx-auto max-w-3xl px-6">
+    <div class="mb-16 text-center">
+      <h2 class="font-display text-3xl text-rpm-text sm:text-4xl text-balance">{title}</h2>
+      <p class="mt-3 text-rpm-muted">{subtitle}</p>
+    </div>
+
+    <div class="space-y-4">
+      {items.map((item, i) => (
+        <details class="group rounded-xl border border-rpm-highlight-med/40 bg-rpm-base/60 px-6 py-4 transition open:border-rpm-iris/40 open:bg-rpm-surface/60">
+          <summary class="flex cursor-pointer list-none items-center justify-between text-rpm-text transition group-hover:text-rpm-iris">
+            <span class="font-medium">{item.q}</span>
+            <span class="ml-4 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-rpm-highlight-med text-rpm-subtle transition group-open:rotate-45 group-open:border-rpm-iris group-open:text-rpm-iris">+</span>
+          </summary>
+          <p class="mt-3 text-sm leading-relaxed text-rpm-subtle">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

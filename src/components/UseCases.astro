@@ -1,0 +1,40 @@
+---
+import { Terminal, Palette, Calendar, Shield } from "lucide-react";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  cases: { icon: string; title: string; desc: string }[];
+}
+
+const { title, subtitle, cases } = Astro.props;
+
+const icons: Record<string, any> = { Terminal, Palette, Calendar, Shield };
+---
+
+<section class="overflow-hidden border-y border-rpm-highlight-low/60 bg-rpm-surface/30 py-24">
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-16 text-center">
+      <h2 class="font-display text-3xl text-rpm-text sm:text-4xl text-balance">{title}</h2>
+      <p class="mt-3 text-rpm-muted">{subtitle}</p>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {cases.map((c, i) => {
+        const Icon = icons[c.icon] || Terminal;
+        const colors = ["text-rpm-iris", "text-rpm-foam", "text-rpm-love", "text-rpm-gold"];
+        const color = colors[i % colors.length];
+        return (
+          <div class="group relative overflow-hidden rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8 transition hover:-translate-y-2 hover:border-rpm-iris/40">
+            <div class="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-current opacity-5 blur-3xl transition-opacity group-hover:opacity-10" class:list={[color]} />
+            <div class:list={["mb-4 inline-flex rounded-xl border border-current/20 bg-rpm-surface/80 p-3", color]}>
+              <Icon class="h-6 w-6" />
+            </div>
+            <h3 class="font-display text-xl text-rpm-text">{c.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-rpm-subtle">{c.desc}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

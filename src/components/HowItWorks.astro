@@ -1,0 +1,37 @@
+---
+import { ArrowRight } from "lucide-react";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  steps: { number: string; title: string; desc: string }[];
+}
+
+const { title, subtitle, steps } = Astro.props;
+---
+
+<section class="relative overflow-hidden py-24 bg-rpm-base">
+  <div class="absolute inset-0 -z-10 opacity-30 bg-[radial-gradient(ellipse_at_bottom_left,_var(--color-rpm-pine)_0%,_transparent_50%)]" aria-hidden></div>
+
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-16 text-center">
+      <h2 class="font-display text-3xl text-rpm-text sm:text-4xl text-balance">{title}</h2>
+      <p class="mt-3 text-rpm-muted">{subtitle}</p>
+    </div>
+
+    <div class="relative grid gap-8 md:grid-cols-3">
+      <!-- connecting line -->
+      <div class="absolute left-1/2 top-24 hidden h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-rpm-iris via-rpm-foam to-rpm-love md:block" aria-hidden></div>
+
+      {steps.map((step, i) => (
+        <div class="relative z-10 rounded-2xl border border-rpm-highlight-med/40 bg-rpm-surface/60 p-8 text-center transition hover:-translate-y-2 hover:border-rpm-iris/40 hover:shadow-xl">
+          <div class="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-rpm-iris/40 bg-rpm-iris/10 text-rpm-iris font-display text-xl font-bold">
+            {step.number}
+          </div>
+          <h3 class="font-display text-xl text-rpm-text">{step.title}</h3>
+          <p class="mt-2 text-sm text-rpm-subtle">{step.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -8,9 +8,11 @@
   },
   "hero": {
     "badge": "Open Source \u2022 MIT License",
-    "title": "L'agente che cresce con te",
-    "description": "Lydia Agent \u00e8 la tua compagna per codice, creativit\u00e0 e caos controllato. Ispirata al mondo di Alice e ai cuori oscuri che nascondono segreti.",
-    "terminal": "Terminale"
+    "title": "La tua compagna IA, sulla tua macchina",
+    "description": "Lydia Agent gira localmente, ricorda il contesto e gestisce codice, compiti e creativit\u00e0 senza inviare il tuo flusso di lavoro al cloud.",
+    "terminal": "Terminale",
+    "primaryCta": "Installa in 30 secondi",
+    "secondaryCta": "Scopri cosa fa"
   },
   "platforms": {
     "title": "Scarica per il tuo sistema",
@@ -39,8 +41,8 @@
     }
   },
   "featuresGrid": {
-    "title": "Stregata dalla produttivit\u00e0",
-    "subtitle": "Ogni isola Astro idrata solo ci\u00f2 che serve, con animazioni che non spezzano l'incantesimo."
+    "title": "Costruito per makers",
+    "subtitle": "Ogni capacit\u00e0 \u00e8 un'Astro island: interattiva solo dove conta."
   },
   "features": {
     "persistentMemory": "Memoria persistente",
@@ -67,6 +69,63 @@
     "visualDesc": "Genera immagini, diagrammi, arte ASCII e artefatti web curati su richiesta.",
     "code": "Codice di qualit\u00e0",
     "codeDesc": "Scrivi, revisiona, refactorizza e testa codice in pi\u00f9 linguaggi e framework."
+  },
+  "why": {
+    "title": "Perch\u00e9 gli sviluppatori scelgono Lydia",
+    "subtitle": "Meno cambi di contesto. Pi\u00f9 lavoro consegnato.",
+    "without": "Senza Lydia",
+    "with": "Con Lydia",
+    "rows": [
+      { "without": "Copia-incolla prompt tra browser e terminale", "with": "Una CLI per chat, codice e automazione" },
+      { "without": "Perdere il contesto a ogni riavvio della sessione", "with": "Memoria persistente tra progetti e sessioni" },
+      { "without": "Pagare abbonamenti per dieci strumenti diversi", "with": "Open source, locale ed estensibile con skill" },
+      { "without": "Scrivere script collanti che si rompono la settimana dopo", "with": "Agenti affidabili con esecuzione in sandbox" }
+    ]
+  },
+  "how": {
+    "title": "Inizia in tre passaggi",
+    "subtitle": "Dall'installazione al primo task in meno di un minuto.",
+    "steps": [
+      { "number": "01", "title": "Installa", "desc": "Esegui l'installer di una riga per macOS, Windows o Linux." },
+      { "number": "02", "title": "Configura", "desc": "Punta Lydia al tuo provider di modelli e skill opzionali." },
+      { "number": "03", "title": "Delega", "desc": "Chiedi, programma, automatizza o crea. Lydia ricorda ed esegue." }
+    ]
+  },
+  "useCases": {
+    "title": "Cosa puoi costruire",
+    "subtitle": "Da piccole automazioni a progetti creativi complessi.",
+    "cases": [
+      { "icon": "Terminal", "title": "Flussi di sviluppo", "desc": "Refactorizza codice, scrivi test, revisiona PR e gestisci l'infrastruttura da un'unica chat." },
+      { "icon": "Palette", "title": "Asset creativi", "desc": "Genera immagini, arte ASCII, copy, diagrammi e artefatti web curati su richiesta." },
+      { "icon": "Calendar", "title": "Automazioni", "desc": "Programma cron job, promemoria e pipeline che girano in background mentre ti concentri." },
+      { "icon": "Shield", "title": "Sperimentazione sicura", "desc": "Esegui task in subagent isolati cos\u00ec le cattive idee non rompono mai il tuo ambiente principale." }
+    ]
+  },
+  "testimonials": {
+    "title": "Cosa dicono i primi utenti",
+    "subtitle": "Maker che usano Lydia per spedire pi\u00f9 velocemente.",
+    "items": [
+      { "quote": "Ho smesso di saltare tra ChatGPT, il terminale e Notion. Lydia tiene il contesto e semplicemente fa il lavoro.", "author": "Alex M.", "role": "Indie hacker" },
+      { "quote": "L'approccio local-first \u00e8 esattamente ci\u00f2 che volevo. Il mio codice resta sulla mia macchina ma ho comunque i superpoteri di un agente.", "author": "Sofia R.", "role": "Security engineer" },
+      { "quote": "Ho configurato uno skill cron e ora Lydia riassume i miei feed RSS ogni mattina. Ci ho messo cinque minuti.", "author": "Daniel K.", "role": "Product designer" }
+    ]
+  },
+  "faq": {
+    "title": "Domande? Risposte.",
+    "subtitle": "Tutto ci\u00f2 che devi sapere prima di installare.",
+    "items": [
+      { "q": "Lydia \u00e8 gratis?", "a": "S\u00ec. Lydia \u00e8 open source sotto licenza MIT ed \u00e8 gratis da usare, modificare e self-hostare." },
+      { "q": "Gira localmente?", "a": "Il core dell'agente gira sulla tua macchina. Scegli tu il provider di modelli da collegare; i tuoi dati non devono lasciare il tuo sistema a meno che tu non configuri API esterne." },
+      { "q": "Devo saper programmare?", "a": "Un po'. Lydia \u00e8 pensata per sviluppatori e maker tecnici che vogliono un assistente programmabile." },
+      { "q": "Posso aggiungere skill mie?", "a": "Assolutamente. Le skill sono file di codice e configurazione. Aggiungi integrazioni, cron job, fonti di memoria o strumenti personalizzati." },
+      { "q": "Quali modelli sono supportati?", "a": "Qualsiasi modello raggiungibile via API: OpenAI, Anthropic, Ollama locale / llama.cpp, OpenRouter e altri tramite il gateway." },
+      { "q": "In cosa differisce dagli altri agenti?", "a": "Lydia \u00e8 local-first, con memoria persistente e progettata per essere estesa da te, non rinchiusa dietro un abbonamento SaaS." }
+    ]
+  },
+  "cta": {
+    "title": "Pronto a incontrare la tua nuova compagna?",
+    "subtitle": "Installa Lydia con un comando e inizia a delegare.",
+    "button": "Ottieni Lydia"
   },
   "docs": {
     "badge": "Documentazione",

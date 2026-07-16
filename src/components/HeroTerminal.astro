@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  lines: string[];
+}
+const { title, lines } = Astro.props;
+---
+
+<div class="relative mx-auto w-full max-w-lg">
+  <div class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-rpm-iris/20 to-rpm-love/20 blur-2xl"></div>
+  <div class="overflow-hidden rounded-2xl border border-rpm-highlight-med/40 bg-rpm-surface/90 shadow-2xl backdrop-blur-xl">
+    <div class="flex items-center gap-2 border-b border-rpm-highlight-med/40 bg-rpm-base/60 px-4 py-3">
+      <div class="h-3 w-3 rounded-full bg-rpm-love"></div>
+      <div class="h-3 w-3 rounded-full bg-rpm-gold"></div>
+      <div class="h-3 w-3 rounded-full bg-rpm-pine"></div>
+      <span class="ml-2 text-xs text-rpm-muted font-mono">{title}</span>
+    </div>
+    <div class="p-5 font-mono text-sm leading-relaxed">
+      {lines.map((line, i) => (
+        <div class="command-line" style={`animation-delay: ${i * 400}ms`}>
+          <span class="text-rpm-pine">$</span>
+          <span class="ml-2 text-rpm-text">{line}</span>
+          {i === lines.length - 1 && (
+            <span class="typing-cursor">_</span>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .command-line {
+    opacity: 0;
+    transform: translateY(4px);
+    animation: type-in 0.6s ease forwards;
+    margin-bottom: 0.5rem;
+  }
+  .typing-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.2em;
+    background: var(--color-rpm-iris);
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+  }
+  @keyframes type-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+</style>

@@ -1,0 +1,91 @@
+---
+import { Sparkles, ArrowRight, Play } from "lucide-react";
+
+interface Props {
+  badge: string;
+  title: string;
+  description: string;
+  primaryCta: string;
+  secondaryCta: string;
+  lng: string;
+}
+
+const { badge, title, description, primaryCta, secondaryCta, lng } = Astro.props;
+---
+
+<section class="relative flex min-h-[92vh] items-center overflow-hidden border-b border-rpm-highlight-low/60 bg-rpm-base">
+  <!-- Background layers -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="hero-gradient-1"></div>
+    <div class="hero-gradient-2"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
+    <div class="space-y-8">
+      <div class="inline-flex items-center gap-2 rounded-full border border-rpm-iris/30 bg-rpm-iris/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-rpm-iris">
+        <Sparkles class="h-3.5 w-3.5" />
+        {badge}
+      </div>
+      <h1 class="font-display text-5xl leading-[1.05] text-rpm-text sm:text-6xl lg:text-7xl text-balance">
+        {title}
+      </h1>
+      <p class="max-w-xl text-lg leading-relaxed text-rpm-subtle">
+        {description}
+      </p>
+      <div class="flex flex-wrap items-center gap-4">
+        <a href={`/${lng}/#install`} class="group inline-flex items-center gap-2 rounded-full bg-rpm-iris px-6 py-3.5 font-medium text-rpm-base transition hover:bg-rpm-foam hover:text-rpm-base">
+          {primaryCta}
+          <ArrowRight class="h-4 w-4 transition group-hover:translate-x-1" />
+        </a>
+        <a href={`/${lng}/features`} class="inline-flex items-center gap-2 rounded-full border border-rpm-highlight-med/40 bg-rpm-surface/60 px-6 py-3.5 font-medium text-rpm-text transition hover:border-rpm-iris hover:text-rpm-iris">
+          <Play class="h-4 w-4" />
+          {secondaryCta}
+        </a>
+      </div>
+    </div>
+    <slot name="visual" />
+  </div>
+</section>
+
+<style>
+  .hero-gradient-1 {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: var(--color-rpm-iris);
+    opacity: 0.12;
+    filter: blur(120px);
+    animation: hero-pulse 10s ease-in-out infinite;
+  }
+  .hero-gradient-2 {
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--color-rpm-love);
+    opacity: 0.1;
+    filter: blur(100px);
+    animation: hero-pulse 12s ease-in-out infinite reverse;
+  }
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      linear-gradient(var(--color-rpm-highlight-med) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-rpm-highlight-med) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 0%, transparent 70%);
+  }
+  @keyframes hero-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.1; }
+    50% { transform: scale(1.1); opacity: 0.14; }
+  }
+</style>
