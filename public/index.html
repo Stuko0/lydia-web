@@ -50,14 +50,8 @@
         var code = langs[i].slice(0, 2);
         if (supported.indexOf(code) !== -1) { lang = code; break; }
       }
-      // Determine base path
-      var scripts = document.getElementsByTagName('script');
-      var base = '';
-      try { base = new URL(scripts[0].src).pathname.replace(/\/[^\/]*$/, '/').replace(/\/+$/, ''); } catch(e) {}
-      if (!base) base = window.location.pathname.replace(/\/+$/, '');
-      var dest = base + '/' + lang + '/';
       document.getElementById('lang-display').textContent = lang.toUpperCase();
-      window.location.href = dest;
+      window.location.href = lang + '/';
     })();
   </script>
 </body>
