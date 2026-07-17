@@ -53,11 +53,7 @@ const description = t.hero.description;
     lng={lng}
   >
     <div slot="visual">
-      <HeroTerminal title={t.hero.terminal} lines={[
-        "lydia install --stable",
-        "lydia config set provider=ollama",
-        "lydia run 'refactor auth module'"
-      ]} />
+      <HeroTerminal title={t.hero.terminal} />
     </div>
   </HeroSection>
 
