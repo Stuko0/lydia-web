@@ -9,17 +9,17 @@ const { alt = "Lydia Agent illustration" } = Astro.props;
   <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label={alt}>
     <defs>
       <linearGradient id="dressGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#c4a7e7" />
-        <stop offset="50%" stop-color="#9ccfd8" />
-        <stop offset="100%" stop-color="#eb6f92" />
+        <stop offset="0%" stop-color="#3a8c8c" />
+        <stop offset="50%" stop-color="#4fa8a8" />
+        <stop offset="100%" stop-color="#2a6b6b" />
       </linearGradient>
       <linearGradient id="hairGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#ea9a97" />
-        <stop offset="100%" stop-color="#f6c177" />
+        <stop offset="0%" stop-color="#b8864e" />
+        <stop offset="100%" stop-color="#c45a6b" />
       </linearGradient>
       <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#c4a7e7" stop-opacity="0.35" />
-        <stop offset="100%" stop-color="#c4a7e7" stop-opacity="0" />
+        <stop offset="0%" stop-color="#4fa8a8" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="#4fa8a8" stop-opacity="0" />
       </radialGradient>
       <filter id="softGlow">
         <feGaussianBlur stdDeviation="4" result="coloredBlur" />
@@ -37,44 +37,44 @@ const { alt = "Lydia Agent illustration" } = Astro.props;
     <path class="dress" d="M140 180 Q120 260 100 380 Q200 420 300 380 Q280 260 260 180 Q200 160 140 180" fill="url(#dressGrad)" opacity="0.9" filter="url(#softGlow)" />
 
     <!-- Apron -->
-    <path d="M160 220 Q200 240 240 220 L250 320 Q200 340 150 320 Z" fill="#e0def4" opacity="0.12" />
+    <path d="M160 220 Q200 240 240 220 L250 320 Q200 340 150 320 Z" fill="#d4cfc7" opacity="0.08" />
 
     <!-- Neck/Collar -->
-    <path d="M170 180 Q200 210 230 180 L230 150 Q200 160 170 150 Z" fill="#393552" opacity="0.6" />
+    <path d="M170 180 Q200 210 230 180 L230 150 Q200 160 170 150 Z" fill="#221e30" opacity="0.6" />
 
     <!-- Head -->
-    <ellipse cx="200" cy="130" rx="48" ry="56" fill="#2a273f" stroke="#c4a7e7" stroke-width="1.5" />
+    <ellipse cx="200" cy="130" rx="48" ry="56" fill="#16131f" stroke="#b8864e" stroke-width="1.5" />
 
     <!-- Hair -->
     <path class="hair" d="M155 110 Q150 60 200 55 Q255 60 248 120 Q260 150 235 165 Q200 150 165 165 Q140 150 155 110" fill="url(#hairGrad)" opacity="0.85" />
 
     <!-- Eyes -->
     <g class="eyes">
-      <ellipse cx="184" cy="132" rx="6" ry="8" fill="#e0def4" />
-      <ellipse cx="216" cy="132" rx="6" ry="8" fill="#e0def4" />
-      <circle cx="186" cy="130" r="2.5" fill="#232136" />
-      <circle cx="218" cy="130" r="2.5" fill="#232136" />
+      <ellipse cx="184" cy="132" rx="6" ry="8" fill="#d4cfc7" />
+      <ellipse cx="216" cy="132" rx="6" ry="8" fill="#d4cfc7" />
+      <circle cx="186" cy="130" r="2.5" fill="#0c0a12" />
+      <circle cx="218" cy="130" r="2.5" fill="#0c0a12" />
     </g>
 
     <!-- Mouth -->
-    <path d="M192 155 Q200 160 208 155" stroke="#eb6f92" stroke-width="2" stroke-linecap="round" fill="none" />
+    <path d="M192 155 Q200 160 208 155" stroke="#a8213a" stroke-width="2" stroke-linecap="round" fill="none" />
 
     <!-- Cards / sparkles -->
     <g class="floating-element fe-1">
-      <rect x="270" y="120" width="40" height="56" rx="8" fill="#393552" stroke="#c4a7e7" stroke-width="1" />
-      <circle cx="290" cy="148" r="10" fill="#c4a7e7" opacity="0.3" />
+      <rect x="270" y="120" width="40" height="56" rx="8" fill="#221e30" stroke="#b8864e" stroke-width="1" />
+      <circle cx="290" cy="148" r="10" fill="#b8864e" opacity="0.3" />
     </g>
     <g class="floating-element fe-2">
-      <rect x="85" y="150" width="34" height="48" rx="6" fill="#393552" stroke="#9ccfd8" stroke-width="1" />
-      <rect x="95" y="168" width="14" height="14" rx="2" fill="#9ccfd8" opacity="0.4" />
+      <rect x="85" y="150" width="34" height="48" rx="6" fill="#221e30" stroke="#4fa8a8" stroke-width="1" />
+      <rect x="95" y="168" width="14" height="14" rx="2" fill="#4fa8a8" opacity="0.4" />
     </g>
     <g class="floating-element fe-3">
-      <path d="M310 250 L318 270 L340 270 L322 282 L328 302 L310 288 L292 302 L298 282 L280 270 L302 270 Z" fill="#f6c177" opacity="0.7" />
+      <path d="M310 250 L318 270 L340 270 L322 282 L328 302 L310 288 L292 302 L298 282 L280 270 L302 270 Z" fill="#b8864e" opacity="0.7" />
     </g>
     <g class="floating-element fe-4">
-      <circle cx="90" cy="260" r="4" fill="#eb6f92" />
-      <circle cx="110" cy="280" r="3" fill="#ea9a97" />
-      <circle cx="75" cy="290" r="2.5" fill="#f6c177" />
+      <circle cx="90" cy="260" r="4" fill="#a8213a" />
+      <circle cx="110" cy="280" r="3" fill="#c45a6b" />
+      <circle cx="75" cy="290" r="2.5" fill="#b8864e" />
     </g>
   </svg>
 </figure>
@@ -89,7 +89,7 @@ const { alt = "Lydia Agent illustration" } = Astro.props;
     max-width: 420px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 30px 60px rgba(196, 167, 231, 0.18));
+    filter: drop-shadow(0 30px 60px rgba(58, 140, 140, 0.15));
   }
   .floating-element {
     animation: card-float 5s ease-in-out infinite;

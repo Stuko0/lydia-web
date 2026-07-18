@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Rose Pine Moon only */
-  --color-rpm-base: #232136;
-  --color-rpm-surface: #2a273f;
-  --color-rpm-overlay: #393552;
-  --color-rpm-muted: #6e6a86;
-  --color-rpm-subtle: #908caa;
-  --color-rpm-text: #e0def4;
-  --color-rpm-love: #eb6f92;
-  --color-rpm-gold: #f6c177;
-  --color-rpm-rose: #ea9a97;
-  --color-rpm-pine: #3e8fb0;
-  --color-rpm-foam: #9ccfd8;
-  --color-rpm-iris: #c4a7e7;
-  --color-rpm-highlight-low: #2a2837;
-  --color-rpm-highlight-med: #44415a;
-  --color-rpm-highlight-high: #56526e;
+  /* ── Alice's Descent ── Alice Madness Returns × Heartless palette ── */
+  --color-rpm-base: #0c0a12;
+  --color-rpm-surface: #16131f;
+  --color-rpm-overlay: #221e30;
+  --color-rpm-muted: #6e687c;
+  --color-rpm-subtle: #958da5;
+  --color-rpm-text: #d4cfc7;
+  --color-rpm-love: #a8213a;
+  --color-rpm-rose: #c45a6b;
+  --color-rpm-iris: #7848a0;
+  --color-rpm-gold: #b8864e;
+  --color-rpm-pine: #3a8c8c;
+  --color-rpm-foam: #4fa8a8;
+  --color-rpm-highlight-low: #191622;
+  --color-rpm-highlight-med: #2d2940;
+  --color-rpm-highlight-high: #413d57;
 
   --font-display: "Cinzel", serif;
   --font-body: "Inter", sans-serif;
@@ -35,7 +35,6 @@ body {
 
 /* ── Alice Madness Returns ── Victorian Card Aesthetic ── */
 
-/* Card base */
 .card-alice {
   position: relative;
   border-radius: 1rem;
@@ -45,8 +44,8 @@ body {
   overflow: hidden;
 }
 .card-alice:hover {
-  border-color: var(--color-rpm-iris);
-  box-shadow: 0 8px 40px -12px rgba(196, 167, 231, 0.2);
+  border-color: color-mix(in srgb, var(--color-rpm-gold) 50%, transparent);
+  box-shadow: 0 8px 40px -12px rgba(184, 134, 78, 0.15), 0 0 80px -24px rgba(168, 33, 58, 0.08);
   transform: translateY(-4px);
 }
 .card-alice::before {
@@ -54,7 +53,7 @@ body {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, transparent 35%, var(--color-rpm-iris) 50%, transparent 65%);
+  background: linear-gradient(135deg, transparent 35%, var(--color-rpm-gold) 50%, transparent 65%);
   opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none;
@@ -62,7 +61,7 @@ body {
   -webkit-mask-image: radial-gradient(circle at 50% 50%, black 35%, transparent 55%);
 }
 .card-alice:hover::before {
-  opacity: 0.12;
+  opacity: 0.1;
 }
 
 /* Card suit watermark */
@@ -73,13 +72,13 @@ body {
   font-size: 100px;
   font-weight: 700;
   line-height: 1;
-  opacity: 0.035;
+  opacity: 0.03;
   pointer-events: none;
   user-select: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .card-alice:hover .suit-watermark {
-  opacity: 0.07;
+  opacity: 0.06;
   transform: scale(1.1);
 }
 
@@ -103,7 +102,7 @@ body {
 }
 .divider-ornate-glow {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-rpm-iris), transparent);
+  background: linear-gradient(90deg, transparent, var(--color-rpm-gold), transparent);
   margin: 1rem 0;
 }
 
@@ -129,14 +128,14 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse at 50% 0%, transparent 40%, var(--color-rpm-base) 85%);
+  background: radial-gradient(ellipse at 50% 0%, transparent 30%, var(--color-rpm-base) 80%);
 }
 
 /* Fabric grid pattern */
 .fabric-pattern {
   position: absolute;
   inset: 0;
-  opacity: 0.02;
+  opacity: 0.025;
   pointer-events: none;
   background-image:
     repeating-linear-gradient(0deg, transparent, transparent 60px, var(--color-rpm-highlight-med) 60px, var(--color-rpm-highlight-med) 61px),
@@ -153,18 +152,18 @@ body {
 .glow-orb-1 { width: 400px; height: 400px; top: -10%; right: -10%; opacity: 0.04; }
 .glow-orb-2 { width: 350px; height: 350px; bottom: -10%; left: -10%; opacity: 0.03; }
 
-/* Suit colors as utility classes */
-.suit-spade { color: var(--color-rpm-iris); }
+/* Suit colors — Alice Madness Returns re-mapping */
+.suit-spade { color: var(--color-rpm-pine); }
 .suit-heart { color: var(--color-rpm-love); }
 .suit-diamond { color: var(--color-rpm-foam); }
 .suit-club { color: var(--color-rpm-gold); }
 
-.border-suit-spade { border-color: color-mix(in srgb, var(--color-rpm-iris) 40%, transparent); }
+.border-suit-spade { border-color: color-mix(in srgb, var(--color-rpm-pine) 40%, transparent); }
 .border-suit-heart { border-color: color-mix(in srgb, var(--color-rpm-love) 40%, transparent); }
 .border-suit-diamond { border-color: color-mix(in srgb, var(--color-rpm-foam) 40%, transparent); }
 .border-suit-club { border-color: color-mix(in srgb, var(--color-rpm-gold) 40%, transparent); }
 
-.bg-suit-spade { background-color: color-mix(in srgb, var(--color-rpm-iris) 8%, transparent); }
+.bg-suit-spade { background-color: color-mix(in srgb, var(--color-rpm-pine) 8%, transparent); }
 .bg-suit-heart { background-color: color-mix(in srgb, var(--color-rpm-love) 8%, transparent); }
 .bg-suit-diamond { background-color: color-mix(in srgb, var(--color-rpm-foam) 8%, transparent); }
 .bg-suit-club { background-color: color-mix(in srgb, var(--color-rpm-gold) 8%, transparent); }
@@ -207,7 +206,7 @@ body {
 }
 
 .glow {
-  box-shadow: 0 0 40px -12px var(--color-rpm-iris), 0 0 80px -24px var(--color-rpm-love);
+  box-shadow: 0 0 40px -12px var(--color-rpm-gold), 0 0 80px -24px var(--color-rpm-love);
 }
 
 .noise {
@@ -218,12 +217,12 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 ::selection {
-  background: var(--color-rpm-iris);
+  background: var(--color-rpm-love);
   color: var(--color-rpm-base);
 }
 
