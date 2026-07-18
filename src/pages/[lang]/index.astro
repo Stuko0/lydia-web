@@ -9,6 +9,7 @@ import HowItWorks from "../../components/HowItWorks.astro";
 import UseCases from "../../components/UseCases.astro";
 import Testimonials from "../../components/Testimonials.astro";
 import FAQ from "../../components/FAQ.astro";
+import Roadmap from "../../components/Roadmap.astro";
 import { InstallCommand } from "../../components/InstallCommand";
 import { RotatingCard } from "../../components/RotatingCard";
 import { ScrollReveal } from "../../components/ScrollReveal";
@@ -77,6 +78,12 @@ const description = t.hero.description;
     title={t.useCases.title}
     subtitle={t.useCases.subtitle}
     cases={t.useCases.cases}
+  />
+
+  <Roadmap
+    title={t.roadmap.title}
+    subtitle={t.roadmap.subtitle}
+    phases={t.roadmap.phases}
   />
 
   <section id="features" class="relative overflow-hidden py-24 bg-rpm-base">

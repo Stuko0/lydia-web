@@ -127,6 +127,56 @@
     "subtitle": "Install Lydia in one command and start delegating.",
     "button": "Get Lydia now"
   },
+  "roadmap": {
+    "title": "Strategic Roadmap",
+    "subtitle": "From personal CLI to enterprise-ready multimodal workspace \u2014 here\u2019s what\u2019s coming.",
+    "phases": [
+      {
+        "phase": "Phase 1",
+        "objective": "Premium Local-First Workspace & Advanced Visual Interfaces",
+        "items": [
+          "UI/UX overhaul with theming engine (Ros\u00e9 Pine, dynamic layouts, Spaces profiles)",
+          "Local LLM auto-discovery \u2014 detect Ollama, LM Studio with one-click model pull",
+          "Interactive widgets \u2014 charts, sortable tables, zoomable Mermaid diagrams",
+          "Visual workflow builder with React Flow \u2014 drag & drop skills into node graphs",
+          "In-app plugin & skill marketplace to download community workflows"
+        ]
+      },
+      {
+        "phase": "Phase 2",
+        "objective": "Event-Driven Proactivity",
+        "items": [
+          "Event engine core \u2014 Lydia listens instead of waiting for prompts",
+          "File system watcher + local webhook server for GitHub, Jira events",
+          "System monitor \u2014 agent alerts on CPU/RAM spikes or network changes",
+          "System tray pulse + notification center for agent-initiated actions",
+          "Configurable proactivity levels: Silent / Alert-Only / Autonomous"
+        ]
+      },
+      {
+        "phase": "Phase 3",
+        "objective": "The Team Agent \u2014 B2B & Enterprise Collaboration",
+        "items": [
+          "Lydia Server: FastAPI backend with shared session store and vector DB",
+          "Enterprise SSO (OIDC/SAML) + RBAC engine with tool-to-role mapping",
+          "Immutable audit logs for every tool execution across the organization",
+          "Channels view (like Slack) with WebSocket real-time sync",
+          "Agent-to-agent protocol \u2014 local Lydia delegates to cloud Lydia"
+        ]
+      },
+      {
+        "phase": "Phase 4",
+        "objective": "Continuous Multimodal Observation",
+        "items": [
+          "Screen awareness via Electron desktopCapturer with frame-diffing",
+          "OS accessibility API reading \u2014 extract text without heavy OCR",
+          "Ambient VAD + local whisper.cpp transcription",
+          "Voice interrupt \u2014 speak to stop agent generation",
+          "Privacy hardware toggle + configurable denylists for sensitive apps"
+        ]
+      }
+    ]
+  },
   "docs": {
     "badge": "Documentation",
     "title": "Documentation",

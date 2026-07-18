@@ -1,0 +1,68 @@
+---
+interface Phase {
+  phase: string;
+  objective: string;
+  items: string[];
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  phases: Phase[];
+}
+
+const { title, subtitle, phases } = Astro.props;
+const colors = ["iris", "foam", "gold", "love"] as const;
+---
+
+<section class="relative overflow-hidden py-24 bg-rpm-surface/30">
+  <div class="absolute inset-0 -z-10 opacity-20 bg-[radial-gradient(ellipse_at_bottom_right,_var(--color-rpm-iris)_0%,_transparent_50%)]" aria-hidden></div>
+
+  <div class="mx-auto max-w-7xl px-6">
+    <div class="mb-16 text-center">
+      <h2 class="font-display text-3xl text-rpm-text sm:text-4xl text-balance">{title}</h2>
+      <p class="mt-3 text-rpm-muted max-w-2xl mx-auto">{subtitle}</p>
+    </div>
+
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-8 top-0 h-full w-px bg-gradient-to-b from-rpm-iris via-rpm-foam via-rpm-gold to-rpm-love hidden md:block" aria-hidden></div>
+
+      <div class="space-y-12">
+        {phases.map((phase, i) => {
+          const color = colors[i % colors.length];
+          const borderKey = `border-rpm-${color}/30`;
+          const bgKey = `bg-rpm-${color}/10`;
+          const textKey = `text-rpm-${color}`;
+          return (
+            <div class="group relative md:pl-20">
+              <!-- Timeline dot -->
+              <div class={`absolute left-4 top-2 z-10 hidden h-9 w-9 rounded-full border-2 ${borderKey} ${bgKey} md:flex items-center justify-center text-xs font-bold ${textKey}`}>
+                {i + 1}
+              </div>
+
+              <div class="overflow-hidden rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/80 transition hover:border-rpm-iris/40 hover:shadow-xl">
+                <div class="p-6 sm:p-8">
+                  <div class="mb-2">
+                    <span class={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${bgKey} ${textKey}`}>
+                      {phase.phase}
+                    </span>
+                  </div>
+                  <h3 class="font-display text-xl text-rpm-text sm:text-2xl">{phase.objective}</h3>
+                  <ul class="mt-5 space-y-2">
+                    {phase.items.map((item) => (
+                      <li class="flex items-start gap-3 text-sm text-rpm-subtle">
+                        <span class={`mt-0.5 shrink-0 ${textKey}`}>▸</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>

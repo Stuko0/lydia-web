@@ -127,6 +127,56 @@
     "subtitle": "Installa Lydia con un comando e inizia a delegare.",
     "button": "Ottieni Lydia"
   },
+  "roadmap": {
+    "title": "Roadmap Strategica",
+    "subtitle": "Da CLI personale a spazio di lavoro multimodale enterprise-ready \u2014 ecco cosa arriver\u00e0.",
+    "phases": [
+      {
+        "phase": "Fase 1",
+        "objective": "Spazio di Lavoro Local Premium e Interfacce Visive Avanzate",
+        "items": [
+          "Rinnovo UI/UX con motore di temi (Ros\u00e9 Pine, layout dinamici, profili Spaces)",
+          "Auto-scoperta LLM locale \u2014 rileva Ollama, LM Studio con download modelli con un click",
+          "Widget interattivi \u2014 grafici, tabelle ordinabili, diagrammi Mermaid con zoom",
+          "Costruttore visuale di flussi con React Flow \u2014 drag & drop skills in grafi di nodi",
+          "Marketplace di plugin e skill per scaricare flussi della comunit\u00e0"
+        ]
+      },
+      {
+        "phase": "Fase 2",
+        "objective": "Proattivit\u00e0 Basata su Eventi",
+        "items": [
+          "Motore eventi \u2014 Lydia ascolta invece di aspettare prompt",
+          "Vigile del filesystem + server webhook locale per GitHub, Jira",
+          "Monitor di sistema \u2014 avvisi dell'agente per picchi CPU/RAM o cambi rete",
+          "Impulso tray + centro notifiche per azioni iniziate dall'agente",
+          "Livelli di proattivit\u00e0 configurabili: Silenzioso / Solo Avviso / Autonomo"
+        ]
+      },
+      {
+        "phase": "Fase 3",
+        "objective": "Agente in Team \u2014 Collaborazione B2B e Enterprise",
+        "items": [
+          "Lydia Server: backend FastAPI con store sessioni condiviso e DB vettoriale",
+          "SSO enterprise (OIDC/SAML) + motore RBAC con mappatura tool a ruoli",
+          "Log di audit immutabili per ogni esecuzione tool nell'organizzazione",
+          "Vista canali (come Slack) con sincronizzazione WebSocket in tempo reale",
+          "Protocollo agente-a-agente \u2014 Lydia locale delega a Lydia cloud"
+        ]
+      },
+      {
+        "phase": "Fase 4",
+        "objective": "Osservazione Multimodale Continua",
+        "items": [
+          "Consapevolezza schermo via Electron desktopCapturer con frame-diffing",
+          "Lettura API accessibilit\u00e0 OS \u2014 estrae testo senza OCR pesante",
+          "VAD ambiente + trascrizione locale con whisper.cpp",
+          "Interruzione vocale \u2014 parla per fermare la generazione dell'agente",
+          "Interruttore privacy hardware + denylist configurabili per app sensibili"
+        ]
+      }
+    ]
+  },
   "docs": {
     "badge": "Documentazione",
     "title": "Documentazione",
