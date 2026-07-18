@@ -12,51 +12,109 @@ interface Props {
 }
 
 const { title, subtitle, phases } = Astro.props;
-const colors = ["iris", "foam", "gold", "love"] as const;
+
+const suits = ["♠", "♥", "♦", "♣"];
+const suitNames = ["spade", "heart", "diamond", "club"];
+const colors = ["text-rpm-iris", "text-rpm-love", "text-rpm-foam", "text-rpm-gold"];
+const borders = ["border-rpm-iris/40", "border-rpm-love/40", "border-rpm-foam/40", "border-rpm-gold/40"];
+const bgGlows = ["bg-rpm-iris/5", "bg-rpm-love/5", "bg-rpm-foam/5", "bg-rpm-gold/5"];
 ---
 
-<section class="relative overflow-hidden py-24 bg-rpm-surface/30">
-  <div class="absolute inset-0 -z-10 opacity-20 bg-[radial-gradient(ellipse_at_bottom_right,_var(--color-rpm-iris)_0%,_transparent_50%)]" aria-hidden></div>
+<section class="relative overflow-hidden py-28 bg-rpm-base">
+  <!-- Ornate background texture -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="roadmap-vignette"></div>
+    <div class="roadmap-pattern"></div>
+    <div class="roadmap-glow-1"></div>
+    <div class="roadmap-glow-2"></div>
+  </div>
 
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="mb-16 text-center">
-      <h2 class="font-display text-3xl text-rpm-text sm:text-4xl text-balance">{title}</h2>
-      <p class="mt-3 text-rpm-muted max-w-2xl mx-auto">{subtitle}</p>
+  <div class="relative mx-auto max-w-7xl px-6">
+    <!-- Header with ornate border -->
+    <div class="mb-20 text-center">
+      <div class="mb-4 flex items-center justify-center gap-4">
+        <span class="text-2xl text-rpm-iris opacity-40">♠</span>
+        <span class="h-px w-16 bg-gradient-to-r from-transparent via-rpm-iris to-transparent"></span>
+        <span class="text-2xl text-rpm-love opacity-40">♥</span>
+        <span class="h-px w-16 bg-gradient-to-r from-transparent via-rpm-love to-transparent"></span>
+        <span class="text-2xl text-rpm-foam opacity-40">♦</span>
+        <span class="h-px w-16 bg-gradient-to-r from-transparent via-rpm-foam to-transparent"></span>
+        <span class="text-2xl text-rpm-gold opacity-40">♣</span>
+      </div>
+      <h2 class="font-display text-4xl text-rpm-text sm:text-5xl text-balance">{title}</h2>
+      <p class="mt-4 text-rpm-muted max-w-2xl mx-auto">{subtitle}</p>
+      <div class="mt-6 flex justify-center">
+        <div class="w-24 h-px bg-gradient-to-r from-transparent via-rpm-rose to-transparent"></div>
+      </div>
     </div>
 
+    <!-- Playing cards timeline -->
     <div class="relative">
-      <!-- Timeline line -->
-      <div class="absolute left-8 top-0 h-full w-px bg-gradient-to-b from-rpm-iris via-rpm-foam via-rpm-gold to-rpm-love hidden md:block" aria-hidden></div>
+      <!-- Winding path -->
+      <svg class="pointer-events-none absolute left-1/2 top-0 hidden h-full w-64 -translate-x-1/2 opacity-[0.06] md:block" viewBox="0 0 256 1000" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M128 0 C 200 120, 50 240, 128 360 C 200 480, 50 600, 128 720 C 200 840, 50 960, 128 1000" stroke="url(#roadGrad)" stroke-width="3" fill="none" stroke-dasharray="8 12" />
+        <defs>
+          <linearGradient id="roadGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c4a7e7" />
+            <stop offset="33%" stop-color="#eb6f92" />
+            <stop offset="66%" stop-color="#9ccfd8" />
+            <stop offset="100%" stop-color="#f6c177" />
+          </linearGradient>
+        </defs>
+      </svg>
 
-      <div class="space-y-12">
+      <div class="space-y-8 md:space-y-0 md:grid md:grid-cols-2 md:gap-6 lg:gap-8">
         {phases.map((phase, i) => {
           const color = colors[i % colors.length];
-          const borderKey = `border-rpm-${color}/30`;
-          const bgKey = `bg-rpm-${color}/10`;
-          const textKey = `text-rpm-${color}`;
+          const border = borders[i % borders.length];
+          const suit = suits[i % suits.length];
+          const suitName = suitNames[i % suitNames.length];
+          const bgGlow = bgGlows[i % bgGlows.length];
+          const rotation = i % 2 === 0 ? "-rotate-1" : "rotate-1";
+          const mirror = i % 2 === 0 ? "md:translate-y-12" : "md:translate-y-0";
           return (
-            <div class="group relative md:pl-20">
-              <!-- Timeline dot -->
-              <div class={`absolute left-4 top-2 z-10 hidden h-9 w-9 rounded-full border-2 ${borderKey} ${bgKey} md:flex items-center justify-center text-xs font-bold ${textKey}`}>
-                {i + 1}
-              </div>
+            <div class={`${mirror} ${rotation} transition-all duration-500 hover:rotate-0`}>
+              <div class={`card card-${suitName} group relative overflow-hidden rounded-2xl border ${border} bg-rpm-surface/70 backdrop-blur-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-2`}>
+                <!-- Card suit watermark -->
+                <div class="pointer-events-none absolute -right-8 -top-8 select-none text-[140px] font-bold leading-none opacity-[0.04] transition-all duration-500 group-hover:opacity-[0.07] group-hover:scale-110" class:list={[color]}>
+                  {suit}
+                </div>
 
-              <div class="overflow-hidden rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/80 transition hover:border-rpm-iris/40 hover:shadow-xl">
-                <div class="p-6 sm:p-8">
-                  <div class="mb-2">
-                    <span class={`inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider ${bgKey} ${textKey}`}>
-                      {phase.phase}
-                    </span>
+                <!-- Card top-left suit -->
+                <div class="absolute left-5 top-5 text-lg font-bold select-none" class:list={[color]}>
+                  {suit}
+                </div>
+
+                <!-- Card torn edge effect -->
+                <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-rpm-base/40 to-transparent opacity-60"></div>
+
+                <div class="p-6 sm:p-8 pt-12">
+                  <!-- Phase badge -->
+                  <div class={`mb-4 inline-flex items-center gap-2 rounded-full border ${border} ${bgGlow} px-4 py-1.5`}>
+                    <span class="text-xs font-bold uppercase tracking-[0.15em]" class:list={[color]}>{phase.phase}</span>
+                    <span class="text-xs opacity-40">{suit}</span>
                   </div>
-                  <h3 class="font-display text-xl text-rpm-text sm:text-2xl">{phase.objective}</h3>
-                  <ul class="mt-5 space-y-2">
+
+                  <!-- Objective -->
+                  <h3 class="font-display text-lg text-rpm-text sm:text-xl leading-snug">{phase.objective}</h3>
+
+                  <!-- Divider -->
+                  <div class="my-4 h-px w-full bg-gradient-to-r from-transparent via-rpm-highlight-med to-transparent"></div>
+
+                  <!-- Items -->
+                  <ul class="space-y-2.5">
                     {phase.items.map((item) => (
-                      <li class="flex items-start gap-3 text-sm text-rpm-subtle">
-                        <span class={`mt-0.5 shrink-0 ${textKey}`}>▸</span>
+                      <li class="flex items-start gap-3 text-sm leading-relaxed text-rpm-subtle group-hover:text-rpm-text/90 transition-colors">
+                        <span class={`mt-1 shrink-0 font-display text-xs`} class:list={[color]}>◆</span>
                         {item}
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                <!-- Bottom-right suit -->
+                <div class="absolute bottom-5 right-5 text-lg font-bold rotate-180 select-none" class:list={[color]}>
+                  {suit}
                 </div>
               </div>
             </div>
@@ -64,5 +122,78 @@ const colors = ["iris", "foam", "gold", "love"] as const;
         })}
       </div>
     </div>
+
+    <!-- Decorative closing -->
+    <div class="mt-16 flex justify-center">
+      <div class="inline-flex items-center gap-6 text-xs uppercase tracking-[0.25em] text-rpm-muted/60">
+        <span class="w-12 h-px bg-rpm-highlight-med"></span>
+        <span class="font-display">✦ onward ✦</span>
+        <span class="w-12 h-px bg-rpm-highlight-med"></span>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  .roadmap-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, transparent 30%, var(--color-rpm-base) 80%);
+  }
+  .roadmap-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.025;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(196, 167, 231, 0.3) 80px, rgba(196, 167, 231, 0.3) 81px),
+      repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(235, 111, 146, 0.3) 80px, rgba(235, 111, 146, 0.3) 81px);
+  }
+  .roadmap-glow-1 {
+    position: absolute;
+    top: 10%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: var(--color-rpm-iris);
+    opacity: 0.04;
+    filter: blur(120px);
+  }
+  .roadmap-glow-2 {
+    position: absolute;
+    bottom: 10%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: var(--color-rpm-love);
+    opacity: 0.03;
+    filter: blur(100px);
+  }
+
+  /* Card animations */
+  .card {
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, transparent 40%, currentColor 50%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 55%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 55%);
+  }
+  .card:hover::before {
+    opacity: 0.15;
+  }
+
+  .card-spade { color: var(--color-rpm-iris); }
+  .card-heart { color: var(--color-rpm-love); }
+  .card-diamond { color: var(--color-rpm-foam); }
+  .card-club { color: var(--color-rpm-gold); }
+</style>

@@ -1,15 +1,15 @@
 {
   "nav": {
     "home": "Home",
-    "features": "Funzionalit\u00e0",
+    "features": "Funzionalità",
     "docs": "Docs",
     "github": "GitHub",
     "install": "Installa"
   },
   "hero": {
-    "badge": "Open Source \u2022 MIT License",
+    "badge": "Open Source • MIT License",
     "title": "La tua compagna IA, sulla tua macchina",
-    "description": "Lydia Agent gira localmente, ricorda il contesto e gestisce codice, compiti e creativit\u00e0 senza inviare il tuo flusso di lavoro al cloud.",
+    "description": "Lydia Agent gira localmente, ricorda il contesto e gestisce codice, compiti e creatività senza inviare il tuo flusso di lavoro al cloud.",
     "terminal": "Terminale",
     "primaryCta": "Installa in 30 secondi",
     "secondaryCta": "Scopri cosa fa"
@@ -29,7 +29,7 @@
     "badge": "Anteprima",
     "title": "Vive ovunque, ricorda tutto.",
     "description": "Dal terminale al desktop, Lydia esegue task, conserva memoria e si integra con i tuoi strumenti preferiti.",
-    "ctaFeatures": "Vedi funzionalit\u00e0",
+    "ctaFeatures": "Vedi funzionalità",
     "ctaDocs": "Leggi docs",
     "slides": {
       "memory": "Memoria persistente",
@@ -42,21 +42,21 @@
   },
   "featuresGrid": {
     "title": "Costruito per makers",
-    "subtitle": "Ogni capacit\u00e0 \u00e8 un'Astro island: interattiva solo dove conta."
+    "subtitle": "Ogni capacità è un'Astro island: interattiva solo dove conta."
   },
   "features": {
     "persistentMemory": "Memoria persistente",
     "persistentMemoryDesc": "Lydia memorizza fatti, preferenze e contesto di progetto usando skill di memoria e note strutturate.",
     "webBrowse": "Navigazione web",
     "webBrowseDesc": "Apri siti, estrai dati, interagisci con form e verifica i risultati in tempo reale.",
-    "creative": "Creativit\u00e0 assistita",
+    "creative": "Creatività assistita",
     "creativeDesc": "Genera arte ASCII, diagrammi, musica, copy e codice con un suo stile.",
     "scheduled": "Task programmati",
     "scheduledDesc": "Crea cron job, promemoria e pipeline che continuano a girare mentre riposi.",
     "sandbox": "Sandboxing sicuro",
     "sandboxDesc": "Ogni subagent lavora in un contesto isolato per evitare conflitti e rischi.",
     "astroIslands": "Astro Islands",
-    "astroIslandsDesc": "Idratazione selettiva: animazioni e interattivit\u00e0 solo dove servono.",
+    "astroIslandsDesc": "Idratazione selettiva: animazioni e interattività solo dove servono.",
     "cli": "CLI nativo",
     "cliDesc": "Controlla l'intero agente dal terminale con un set di comandi coerente e veloce.",
     "integrations": "Integrazioni",
@@ -67,59 +67,129 @@
     "audioDesc": "Text-to-speech, memo vocali, generazione musicale e analisi audio inclusi.",
     "visual": "Design visivo",
     "visualDesc": "Genera immagini, diagrammi, arte ASCII e artefatti web curati su richiesta.",
-    "code": "Codice di qualit\u00e0",
-    "codeDesc": "Scrivi, revisiona, refactorizza e testa codice in pi\u00f9 linguaggi e framework."
+    "code": "Codice di qualità",
+    "codeDesc": "Scrivi, revisiona, refactorizza e testa codice in più linguaggi e framework."
   },
   "why": {
-    "title": "Perch\u00e9 gli sviluppatori scelgono Lydia",
-    "subtitle": "Meno cambi di contesto. Pi\u00f9 lavoro consegnato.",
+    "title": "Perché gli sviluppatori scelgono Lydia",
+    "subtitle": "Meno cambi di contesto. Più lavoro consegnato.",
     "without": "Senza Lydia",
     "with": "Con Lydia",
     "rows": [
-      { "without": "Copia-incolla prompt tra browser e terminale", "with": "Una CLI per chat, codice e automazione" },
-      { "without": "Perdere il contesto a ogni riavvio della sessione", "with": "Memoria persistente tra progetti e sessioni" },
-      { "without": "Pagare abbonamenti per dieci strumenti diversi", "with": "Open source, locale ed estensibile con skill" },
-      { "without": "Scrivere script collanti che si rompono la settimana dopo", "with": "Agenti affidabili con esecuzione in sandbox" }
+      {
+        "without": "Copia-incolla prompt tra browser e terminale",
+        "with": "Una CLI per chat, codice e automazione"
+      },
+      {
+        "without": "Perdere il contesto a ogni riavvio della sessione",
+        "with": "Memoria persistente tra progetti e sessioni"
+      },
+      {
+        "without": "Pagare abbonamenti per dieci strumenti diversi",
+        "with": "Open source, locale ed estensibile con skill"
+      },
+      {
+        "without": "Scrivere script collanti che si rompono la settimana dopo",
+        "with": "Agenti affidabili con esecuzione in sandbox"
+      }
     ]
   },
   "how": {
     "title": "Inizia in tre passaggi",
     "subtitle": "Dall'installazione al primo task in meno di un minuto.",
     "steps": [
-      { "number": "01", "title": "Installa", "desc": "Esegui l'installer di una riga per macOS, Windows o Linux." },
-      { "number": "02", "title": "Configura", "desc": "Punta Lydia al tuo provider di modelli e skill opzionali." },
-      { "number": "03", "title": "Delega", "desc": "Chiedi, programma, automatizza o crea. Lydia ricorda ed esegue." }
+      {
+        "number": "01",
+        "title": "Installa",
+        "desc": "Esegui l'installer di una riga per macOS, Windows o Linux."
+      },
+      {
+        "number": "02",
+        "title": "Configura",
+        "desc": "Punta Lydia al tuo provider di modelli e skill opzionali."
+      },
+      {
+        "number": "03",
+        "title": "Delega",
+        "desc": "Chiedi, programma, automatizza o crea. Lydia ricorda ed esegue."
+      }
     ]
   },
   "useCases": {
     "title": "Cosa puoi costruire",
     "subtitle": "Da piccole automazioni a progetti creativi complessi.",
     "cases": [
-      { "icon": "Terminal", "title": "Flussi di sviluppo", "desc": "Refactorizza codice, scrivi test, revisiona PR e gestisci l'infrastruttura da un'unica chat." },
-      { "icon": "Palette", "title": "Asset creativi", "desc": "Genera immagini, arte ASCII, copy, diagrammi e artefatti web curati su richiesta." },
-      { "icon": "Calendar", "title": "Automazioni", "desc": "Programma cron job, promemoria e pipeline che girano in background mentre ti concentri." },
-      { "icon": "Shield", "title": "Sperimentazione sicura", "desc": "Esegui task in subagent isolati cos\u00ec le cattive idee non rompono mai il tuo ambiente principale." }
+      {
+        "icon": "Terminal",
+        "title": "Flussi di sviluppo",
+        "desc": "Refactorizza codice, scrivi test, revisiona PR e gestisci l'infrastruttura da un'unica chat."
+      },
+      {
+        "icon": "Palette",
+        "title": "Asset creativi",
+        "desc": "Genera immagini, arte ASCII, copy, diagrammi e artefatti web curati su richiesta."
+      },
+      {
+        "icon": "Calendar",
+        "title": "Automazioni",
+        "desc": "Programma cron job, promemoria e pipeline che girano in background mentre ti concentri."
+      },
+      {
+        "icon": "Shield",
+        "title": "Sperimentazione sicura",
+        "desc": "Esegui task in subagent isolati così le cattive idee non rompono mai il tuo ambiente principale."
+      }
     ]
   },
   "testimonials": {
     "title": "Cosa dicono i primi utenti",
-    "subtitle": "Maker che usano Lydia per spedire pi\u00f9 velocemente.",
+    "subtitle": "Maker che usano Lydia per spedire più velocemente.",
     "items": [
-      { "quote": "Ho smesso di saltare tra ChatGPT, il terminale e Notion. Lydia tiene il contesto e semplicemente fa il lavoro.", "author": "Alex M.", "role": "Indie hacker" },
-      { "quote": "L'approccio local-first \u00e8 esattamente ci\u00f2 che volevo. Il mio codice resta sulla mia macchina ma ho comunque i superpoteri di un agente.", "author": "Sofia R.", "role": "Security engineer" },
-      { "quote": "Ho configurato uno skill cron e ora Lydia riassume i miei feed RSS ogni mattina. Ci ho messo cinque minuti.", "author": "Daniel K.", "role": "Product designer" }
+      {
+        "quote": "Ho smesso di saltare tra ChatGPT, il terminale e Notion. Lydia tiene il contesto e semplicemente fa il lavoro.",
+        "author": "Alex M.",
+        "role": "Indie hacker"
+      },
+      {
+        "quote": "L'approccio local-first è esattamente ciò che volevo. Il mio codice resta sulla mia macchina ma ho comunque i superpoteri di un agente.",
+        "author": "Sofia R.",
+        "role": "Security engineer"
+      },
+      {
+        "quote": "Ho configurato uno skill cron e ora Lydia riassume i miei feed RSS ogni mattina. Ci ho messo cinque minuti.",
+        "author": "Daniel K.",
+        "role": "Product designer"
+      }
     ]
   },
   "faq": {
     "title": "Domande? Risposte.",
-    "subtitle": "Tutto ci\u00f2 che devi sapere prima di installare.",
+    "subtitle": "Tutto ciò che devi sapere prima di installare.",
     "items": [
-      { "q": "Lydia \u00e8 gratis?", "a": "S\u00ec. Lydia \u00e8 open source sotto licenza MIT ed \u00e8 gratis da usare, modificare e self-hostare." },
-      { "q": "Gira localmente?", "a": "Il core dell'agente gira sulla tua macchina. Scegli tu il provider di modelli da collegare; i tuoi dati non devono lasciare il tuo sistema a meno che tu non configuri API esterne." },
-      { "q": "Devo saper programmare?", "a": "Un po'. Lydia \u00e8 pensata per sviluppatori e maker tecnici che vogliono un assistente programmabile." },
-      { "q": "Posso aggiungere skill mie?", "a": "Assolutamente. Le skill sono file di codice e configurazione. Aggiungi integrazioni, cron job, fonti di memoria o strumenti personalizzati." },
-      { "q": "Quali modelli sono supportati?", "a": "Qualsiasi modello raggiungibile via API: OpenAI, Anthropic, Ollama locale / llama.cpp, OpenRouter e altri tramite il gateway." },
-      { "q": "In cosa differisce dagli altri agenti?", "a": "Lydia \u00e8 local-first, con memoria persistente e progettata per essere estesa da te, non rinchiusa dietro un abbonamento SaaS." }
+      {
+        "q": "Lydia è gratis?",
+        "a": "Sì. Lydia è open source sotto licenza MIT ed è gratis da usare, modificare e self-hostare."
+      },
+      {
+        "q": "Gira localmente?",
+        "a": "Il core dell'agente gira sulla tua macchina. Scegli tu il provider di modelli da collegare; i tuoi dati non devono lasciare il tuo sistema a meno che tu non configuri API esterne."
+      },
+      {
+        "q": "Devo saper programmare?",
+        "a": "Un po'. Lydia è pensata per sviluppatori e maker tecnici che vogliono un assistente programmabile."
+      },
+      {
+        "q": "Posso aggiungere skill mie?",
+        "a": "Assolutamente. Le skill sono file di codice e configurazione. Aggiungi integrazioni, cron job, fonti di memoria o strumenti personalizzati."
+      },
+      {
+        "q": "Quali modelli sono supportati?",
+        "a": "Qualsiasi modello raggiungibile via API: OpenAI, Anthropic, Ollama locale / llama.cpp, OpenRouter e altri tramite il gateway."
+      },
+      {
+        "q": "In cosa differisce dagli altri agenti?",
+        "a": "Lydia è local-first, con memoria persistente e progettata per essere estesa da te, non rinchiusa dietro un abbonamento SaaS."
+      }
     ]
   },
   "cta": {
@@ -129,39 +199,39 @@
   },
   "roadmap": {
     "title": "Roadmap Strategica",
-    "subtitle": "Da CLI personale a spazio di lavoro multimodale enterprise-ready \u2014 ecco cosa arriver\u00e0.",
+    "subtitle": "Da CLI personale a spazio di lavoro multimodale enterprise-ready — ecco cosa arriverà.",
     "phases": [
       {
         "phase": "Fase 1",
         "objective": "Spazio di Lavoro Local Premium e Interfacce Visive Avanzate",
         "items": [
-          "Rinnovo UI/UX con motore di temi (Ros\u00e9 Pine, layout dinamici, profili Spaces)",
-          "Auto-scoperta LLM locale \u2014 rileva Ollama, LM Studio con download modelli con un click",
-          "Widget interattivi \u2014 grafici, tabelle ordinabili, diagrammi Mermaid con zoom",
-          "Costruttore visuale di flussi con React Flow \u2014 drag & drop skills in grafi di nodi",
-          "Marketplace di plugin e skill per scaricare flussi della comunit\u00e0"
+          "Rinnovo UI/UX con motore di temi (Rosé Pine, layout dinamici, profili Spaces)",
+          "Auto-scoperta LLM locale — rileva Ollama, LM Studio con download modelli con un click",
+          "Widget interattivi — grafici, tabelle ordinabili, diagrammi Mermaid con zoom",
+          "Costruttore visuale di flussi con React Flow — drag & drop skills in grafi di nodi",
+          "Marketplace di plugin e skill per scaricare flussi della comunità"
         ]
       },
       {
         "phase": "Fase 2",
-        "objective": "Proattivit\u00e0 Basata su Eventi",
+        "objective": "Proattività Basata su Eventi",
         "items": [
-          "Motore eventi \u2014 Lydia ascolta invece di aspettare prompt",
+          "Motore eventi — Lydia ascolta invece di aspettare prompt",
           "Vigile del filesystem + server webhook locale per GitHub, Jira",
-          "Monitor di sistema \u2014 avvisi dell'agente per picchi CPU/RAM o cambi rete",
+          "Monitor di sistema — avvisi dell'agente per picchi CPU/RAM o cambi rete",
           "Impulso tray + centro notifiche per azioni iniziate dall'agente",
-          "Livelli di proattivit\u00e0 configurabili: Silenzioso / Solo Avviso / Autonomo"
+          "Livelli di proattività configurabili: Silenzioso / Solo Avviso / Autonomo"
         ]
       },
       {
         "phase": "Fase 3",
-        "objective": "Agente in Team \u2014 Collaborazione B2B e Enterprise",
+        "objective": "Agente in Team — Collaborazione B2B e Enterprise",
         "items": [
           "Lydia Server: backend FastAPI con store sessioni condiviso e DB vettoriale",
           "SSO enterprise (OIDC/SAML) + motore RBAC con mappatura tool a ruoli",
           "Log di audit immutabili per ogni esecuzione tool nell'organizzazione",
           "Vista canali (come Slack) con sincronizzazione WebSocket in tempo reale",
-          "Protocollo agente-a-agente \u2014 Lydia locale delega a Lydia cloud"
+          "Protocollo agente-a-agente — Lydia locale delega a Lydia cloud"
         ]
       },
       {
@@ -169,10 +239,22 @@
         "objective": "Osservazione Multimodale Continua",
         "items": [
           "Consapevolezza schermo via Electron desktopCapturer con frame-diffing",
-          "Lettura API accessibilit\u00e0 OS \u2014 estrae testo senza OCR pesante",
+          "Lettura API accessibilità OS — estrae testo senza OCR pesante",
           "VAD ambiente + trascrizione locale con whisper.cpp",
-          "Interruzione vocale \u2014 parla per fermare la generazione dell'agente",
+          "Interruzione vocale — parla per fermare la generazione dell'agente",
           "Interruttore privacy hardware + denylist configurabili per app sensibili"
+        ]
+      },
+      {
+        "phase": "Fase 5",
+        "objective": "Espansione dell'Ecosistema e Esperienza Sviluppatore",
+        "items": [
+          "App mobile companion (React Native) — notifiche, comandi vocali, esplorazione sessioni in movimento",
+          "Plugin SDK formale — scaffolding CLI (‘lydia plugin create’), documentazione e template per sviluppatori terzi",
+          "Integrazione Git nativa — auto-commit delle modifiche dell'agente, generazione changelog, bozze riepilogo PR",
+          "Dashboard di osservabilità locale — utilizzo token, analisi sessioni, log agente live, tracciamento costi",
+          "RAG multimodale locale — trascina PDF, immagini o codebase e interroga senza caricare nulla",
+          "Modalità voce completa — conversazione voce-a-voce con whisper.cpp locale + edge-tts"
         ]
       }
     ]
@@ -193,7 +275,7 @@
   },
   "footer": {
     "links": "Link",
-    "community": "Comunit\u00e0",
+    "community": "Comunità",
     "madeWith": "Fatto con",
     "by": "da"
   }
