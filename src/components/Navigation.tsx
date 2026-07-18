@@ -15,6 +15,8 @@ interface NavigationProps {
   };
 }
 
+const suits = ["♠", "♥", "♦", "♣"];
+
 const links = [
   { key: "home", href: "/" },
   { key: "features", href: "/features" },
@@ -37,17 +39,17 @@ export function Navigation({ currentPath, lng, labels }: NavigationProps) {
   const resolvedHref = (href: string) => (href === "/" ? `/${lng}` : `/${lng}${href}`);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-rpm-highlight-low/60 bg-rpm-base/70 glass">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-rpm-highlight-low/60 bg-rpm-base/80 glass">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <a href={`/${lng}`} className="group flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-rpm-iris/40 bg-rpm-surface text-rpm-iris shadow-[0_0_20px_-6px_var(--color-rpm-iris)] transition group-hover:scale-105">
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg border border-rpm-iris/40 bg-rpm-surface text-rpm-iris transition group-hover:scale-105">
             <Sparkles className="h-5 w-5" />
           </span>
           <span className="font-display text-lg tracking-wide text-rpm-text">Lydia Agent</span>
         </a>
 
-        <div className="hidden items-center gap-6 md:flex">
-          {links.map(({ key, href }) => {
+        <div className="hidden items-center gap-5 md:flex">
+          {links.map(({ key, href }, i) => {
             const isActive = currentPath === href;
             const Icon = key === "home" ? Sparkles : key === "features" ? Heart : BookOpen;
             return (
@@ -55,10 +57,11 @@ export function Navigation({ currentPath, lng, labels }: NavigationProps) {
                 key={key}
                 href={resolvedHref(href)}
                 aria-current={isActive ? "page" : undefined}
-                className={`flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-rpm-iris ${isActive ? "text-rpm-iris" : "text-rpm-subtle"}`}
+                className={`group flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-rpm-iris ${isActive ? "text-rpm-iris" : "text-rpm-subtle"}`}
               >
                 <Icon className="h-4 w-4" />
                 {labels[key as keyof typeof labels]}
+                <span className="ml-0.5 text-[10px] opacity-0 transition-opacity group-hover:opacity-40" aria-hidden>{suits[i % suits.length]}</span>
               </a>
             );
           })}
@@ -73,7 +76,7 @@ export function Navigation({ currentPath, lng, labels }: NavigationProps) {
           </a>
           <a
             href={resolvedHref("/") + "#install"}
-            className="flex items-center gap-1.5 rounded-full bg-rpm-iris/10 px-4 py-2 text-sm font-medium text-rpm-iris ring-1 ring-rpm-iris/30 transition hover:bg-rpm-iris/20"
+            className="flex items-center gap-1.5 rounded-full border border-rpm-iris/30 bg-rpm-iris/10 px-4 py-2 text-sm font-medium text-rpm-iris ring-1 ring-rpm-iris/20 transition hover:bg-rpm-iris/20"
           >
             <Download className="h-4 w-4" />
             {labels.install}
@@ -103,17 +106,18 @@ export function Navigation({ currentPath, lng, labels }: NavigationProps) {
             className="overflow-hidden border-t border-rpm-highlight-low/60 bg-rpm-base/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-3 px-6 py-5">
-              {links.map(({ key, href }) => {
+              {links.map(({ key, href }, i) => {
                 const Icon = key === "home" ? Sparkles : key === "features" ? Heart : BookOpen;
                 return (
                   <a
                     key={key}
                     href={resolvedHref(href)}
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-rpm-text transition hover:bg-rpm-surface"
+                    className="group flex items-center gap-2 rounded-lg px-3 py-2 text-rpm-text transition hover:bg-rpm-surface"
                   >
                     <Icon className="h-4 w-4 text-rpm-iris" />
                     {labels[key as keyof typeof labels]}
+                    <span className="ml-auto text-xs opacity-30" aria-hidden>{suits[i % suits.length]}</span>
                   </a>
                 );
               })}

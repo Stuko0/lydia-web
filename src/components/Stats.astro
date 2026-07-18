@@ -5,19 +5,26 @@ export interface Props {
   langs: string;
 }
 const { stars, version, langs } = Astro.props;
-const stats = [
-  { value: stars, label: "GitHub Stars" },
-  { value: version, label: "Latest Version" },
-  { value: langs, label: "Languages" },
+const statItems = [
+  { value: stars, label: "GitHub Stars", suit: "♠" },
+  { value: version, label: "Latest Version", suit: "♦" },
+  { value: langs, label: "Languages", suit: "♣" },
 ];
 ---
 
-<section class="stats-section">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="stats-grid">
-      {stats.map((stat) => (
-        <div class="stat-item">
-          <span class="stat-number" data-target={stat.label === "Latest Version" ? undefined : stat.value} data-version={stat.label === "Latest Version" ? stat.value : undefined}>{stat.value}</span>
+<section class="relative overflow-hidden py-20 bg-rpm-base">
+  <div class="fabric-pattern"></div>
+  <div class="section-vignette"></div>
+
+  <div class="mx-auto max-w-5xl px-6">
+    <div class="grid gap-4 sm:grid-cols-3">
+      {statItems.map((stat, i) => (
+        <div class="card-alice text-center px-8 py-8">
+          <span class="suit-watermark" class:list={[`suit-${['heart','spade','diamond','club'][i]}`, i === 0 ? "text-rpm-love" : i === 1 ? "text-rpm-iris" : "text-rpm-gold"]}>{stat.suit}</span>
+          <span class="suit-corner suit-corner-tl" class:list={[i === 0 ? "suit-heart text-rpm-love" : i === 1 ? "suit-spade text-rpm-iris" : "suit-club text-rpm-gold"]}>{stat.suit}</span>
+          <span class="suit-corner suit-corner-br" class:list={[i === 0 ? "suit-heart text-rpm-love" : i === 1 ? "suit-spade text-rpm-iris" : "suit-club text-rpm-gold"]}>{stat.suit}</span>
+
+          <span class="stat-number" data-target={i === 1 ? undefined : stat.value} data-version={i === 1 ? stat.value : undefined}>{stat.value}</span>
           <span class="stat-label">{stat.label}</span>
         </div>
       ))}
@@ -27,63 +34,24 @@ const stats = [
 
 <script is:inline>
   (function() {
-    document.querySelectorAll('.stats-section').forEach((section) => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            section.querySelectorAll('.stat-number[data-target]').forEach((el) => {
-              const target = parseInt(el.getAttribute('data-target') || '0', 10);
-              const duration = 1500;
-              const start = performance.now();
-              const animate = (now) => {
-                const progress = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 4);
-                el.textContent = Math.floor(eased * target).toString();
-                if (progress < 1) requestAnimationFrame(animate);
-              };
-              requestAnimationFrame(animate);
-            });
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.4 });
-      observer.observe(section);
+    document.querySelectorAll('.stat-number[data-target]').forEach((el) => {
+      const target = parseInt(el.getAttribute('data-target') || '0', 10);
+      const duration = 1500;
+      const start = performance.now();
+      const animate = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        el.textContent = Math.floor(eased * target).toString();
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
     });
   })();
 </script>
 
 <style>
-  .stats-section {
-    background: linear-gradient(180deg, var(--color-rpm-base) 0%, rgba(42, 39, 63, 0.6) 100%);
-    padding: 5rem 0;
-  }
-  .stats-grid {
-    display: grid;
-    gap: 1px;
-    overflow: hidden;
-    border-radius: 1rem;
-    border: 1px solid var(--color-rpm-highlight-med);
-    background: var(--color-rpm-highlight-med);
-  }
-  @media (min-width: 640px) {
-    .stats-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 2.5rem 1rem;
-    background: var(--color-rpm-base);
-    transition: background 0.3s ease;
-  }
-  .stat-item:hover {
-    background: var(--color-rpm-surface);
-  }
   .stat-number {
+    display: block;
     font-family: var(--font-display);
     font-size: 3rem;
     font-weight: 600;
@@ -94,7 +62,9 @@ const stats = [
     line-height: 1;
   }
   .stat-label {
-    font-size: 0.875rem;
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
     color: var(--color-rpm-subtle);
     text-transform: uppercase;
     letter-spacing: 0.1em;

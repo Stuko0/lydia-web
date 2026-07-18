@@ -33,33 +33,167 @@ body {
   color: var(--color-rpm-text);
 }
 
+/* ── Alice Madness Returns ── Victorian Card Aesthetic ── */
+
+/* Card base */
+.card-alice {
+  position: relative;
+  border-radius: 1rem;
+  border: 1px solid var(--color-rpm-highlight-med);
+  background: linear-gradient(135deg, var(--color-rpm-surface) 0%, color-mix(in srgb, var(--color-rpm-surface) 80%, var(--color-rpm-base)) 100%);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
+}
+.card-alice:hover {
+  border-color: var(--color-rpm-iris);
+  box-shadow: 0 8px 40px -12px rgba(196, 167, 231, 0.2);
+  transform: translateY(-4px);
+}
+.card-alice::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, transparent 35%, var(--color-rpm-iris) 50%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+  mask-image: radial-gradient(circle at 50% 50%, black 35%, transparent 55%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 35%, transparent 55%);
+}
+.card-alice:hover::before {
+  opacity: 0.12;
+}
+
+/* Card suit watermark */
+.suit-watermark {
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.035;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.card-alice:hover .suit-watermark {
+  opacity: 0.07;
+  transform: scale(1.1);
+}
+
+/* Corner suits */
+.suit-corner {
+  position: absolute;
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
+}
+.suit-corner-tl { top: 0.75rem; left: 0.75rem; }
+.suit-corner-br { bottom: 0.75rem; right: 0.75rem; transform: rotate(180deg); }
+
+/* Ornate divider */
+.divider-ornate {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-rpm-highlight-med) 20%, var(--color-rpm-highlight-med) 80%, transparent);
+  margin: 1rem 0;
+}
+.divider-ornate-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-rpm-iris), transparent);
+  margin: 1rem 0;
+}
+
+/* Ornate header decoration */
+.header-ornate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.header-ornate span {
+  font-size: 1.25rem;
+  opacity: 0.3;
+}
+.header-ornate .line {
+  width: 3rem;
+  height: 1px;
+}
+
+/* Section vignette overlay */
+.section-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 0%, transparent 40%, var(--color-rpm-base) 85%);
+}
+
+/* Fabric grid pattern */
+.fabric-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, var(--color-rpm-highlight-med) 60px, var(--color-rpm-highlight-med) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, var(--color-rpm-highlight-med) 60px, var(--color-rpm-highlight-med) 61px);
+}
+
+/* Ambient glow orbs */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.glow-orb-1 { width: 400px; height: 400px; top: -10%; right: -10%; opacity: 0.04; }
+.glow-orb-2 { width: 350px; height: 350px; bottom: -10%; left: -10%; opacity: 0.03; }
+
+/* Suit colors as utility classes */
+.suit-spade { color: var(--color-rpm-iris); }
+.suit-heart { color: var(--color-rpm-love); }
+.suit-diamond { color: var(--color-rpm-foam); }
+.suit-club { color: var(--color-rpm-gold); }
+
+.border-suit-spade { border-color: color-mix(in srgb, var(--color-rpm-iris) 40%, transparent); }
+.border-suit-heart { border-color: color-mix(in srgb, var(--color-rpm-love) 40%, transparent); }
+.border-suit-diamond { border-color: color-mix(in srgb, var(--color-rpm-foam) 40%, transparent); }
+.border-suit-club { border-color: color-mix(in srgb, var(--color-rpm-gold) 40%, transparent); }
+
+.bg-suit-spade { background-color: color-mix(in srgb, var(--color-rpm-iris) 8%, transparent); }
+.bg-suit-heart { background-color: color-mix(in srgb, var(--color-rpm-love) 8%, transparent); }
+.bg-suit-diamond { background-color: color-mix(in srgb, var(--color-rpm-foam) 8%, transparent); }
+.bg-suit-club { background-color: color-mix(in srgb, var(--color-rpm-gold) 8%, transparent); }
+
+/* Slight random rotation for cards */
+.card-tilt-left { transform: rotate(-0.8deg); }
+.card-tilt-right { transform: rotate(0.8deg); }
+.card-tilt-left:hover, .card-tilt-right:hover { transform: rotate(0deg); }
+
+/* ── End Alice theme ── */
+
+/* View transitions */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 500ms;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-::view-transition-old(root) {
-  animation-name: fade-out-up;
-}
-
-::view-transition-new(root) {
-  animation-name: fade-in-up;
-}
-
+::view-transition-old(root) { animation-name: fade-out-up; }
+::view-transition-new(root) { animation-name: fade-in-up; }
 @keyframes fade-in-up {
   from { opacity: 0; transform: translateY(16px) scale(0.985); filter: blur(4px); }
   to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
-
 @keyframes fade-out-up {
   from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
   to { opacity: 0; transform: translateY(-16px) scale(0.985); filter: blur(4px); }
 }
 
-.text-balance {
-  text-wrap: balance;
-}
+.text-balance { text-wrap: balance; }
 
 .mask-radial-fade {
   mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, black 40%, transparent 80%);
@@ -84,7 +218,7 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -93,16 +227,7 @@ body {
   color: var(--color-rpm-base);
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-rpm-base);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-rpm-highlight-med);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-rpm-highlight-high);
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-rpm-base); }
+::-webkit-scrollbar-thumb { background: var(--color-rpm-highlight-med); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-rpm-highlight-high); }

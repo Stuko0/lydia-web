@@ -12,43 +12,64 @@ interface Props {
 const { title, subtitle, withoutTitle, withTitle, rows } = Astro.props;
 ---
 
-<section class="relative overflow-hidden border-b border-rpm-highlight-low/60 bg-rpm-surface/40 py-24">
+<section class="relative overflow-hidden py-24 bg-rpm-surface/30">
+  <div class="fabric-pattern"></div>
+  <div class="glow-orb glow-orb-1" style="background: var(--color-rpm-love)"></div>
+  <div class="section-vignette"></div>
+
   <div class="mx-auto max-w-7xl px-6">
     <div class="mb-16 text-center">
+      <div class="header-ornate">
+        <span class="suit-heart">♥</span>
+        <span class="line" style="background: linear-gradient(90deg, transparent, var(--color-rpm-love))"></span>
+        <span class="suit-spade">♠</span>
+        <span class="line" style="background: linear-gradient(90deg, var(--color-rpm-love), transparent)"></span>
+        <span class="suit-heart">♥</span>
+      </div>
       <h2 class="font-display text-3xl text-rpm-text sm:text-4xl text-balance">{title}</h2>
       <p class="mt-3 text-rpm-muted">{subtitle}</p>
     </div>
 
     <div class="grid gap-6 lg:grid-cols-2">
-      <!-- Sin Lydia -->
-      <div class="rounded-2xl border border-rpm-love/30 bg-rpm-base/80 p-8">
-        <h3 class="mb-6 font-display text-xl text-rpm-love">{withoutTitle}</h3>
-        <ul class="space-y-4">
-          {rows.map((row) => (
-            <li class="flex items-start gap-3 text-rpm-subtle">
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rpm-love/10 text-rpm-love">
-                <X class="h-3 w-3" />
-              </span>
-              {row.without}
-            </li>
-          ))}
-        </ul>
+      <!-- Without Lydia -->
+      <div class="card-alice card-tilt-left border-suit-heart bg-suit-heart">
+        <span class="suit-watermark suit-heart">♥</span>
+        <span class="suit-corner suit-corner-tl suit-heart">♥</span>
+        <span class="suit-corner suit-corner-br suit-heart">♥</span>
+        <div class="p-8 pt-12">
+          <h3 class="mb-6 font-display text-xl suit-heart">{withoutTitle}</h3>
+          <ul class="space-y-4">
+            {rows.map((row) => (
+              <li class="flex items-start gap-3 text-rpm-subtle">
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rpm-love/10 suit-heart">
+                  <X class="h-3 w-3" />
+                </span>
+                {row.without}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
-      <!-- Con Lydia -->
-      <div class="relative rounded-2xl border border-rpm-iris/40 bg-rpm-base/80 p-8 shadow-[0_0_40px_-12px_rgba(196,167,231,0.15)]">
-        <div class="absolute -top-3 left-8 rounded-full bg-rpm-iris px-3 py-1 text-xs font-semibold uppercase tracking-wider text-rpm-base">Lydia</div>
-        <h3 class="mb-6 font-display text-xl text-rpm-iris">{withTitle}</h3>
-        <ul class="space-y-4">
-          {rows.map((row) => (
-            <li class="flex items-start gap-3 text-rpm-text">
-              <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rpm-iris/10 text-rpm-iris">
-                <Check class="h-3 w-3" />
-              </span>
-              {row.with}
-            </li>
-          ))}
-        </ul>
+      <!-- With Lydia -->
+      <div class="card-alice card-tilt-right border-suit-spade bg-suit-spade">
+        <span class="suit-watermark suit-spade">♠</span>
+        <span class="suit-corner suit-corner-tl suit-spade">♠</span>
+        <span class="suit-corner suit-corner-br suit-spade">♠</span>
+        <div class="absolute -top-3 left-8 rounded-full bg-rpm-iris px-3 py-1 text-xs font-semibold uppercase tracking-wider text-rpm-base z-10">Lydia</div>
+        <div class="p-8 pt-12">
+          <h3 class="mb-6 font-display text-xl suit-spade">{withTitle}</h3>
+          <ul class="space-y-4">
+            {rows.map((row) => (
+              <li class="flex items-start gap-3 text-rpm-text">
+                <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rpm-iris/10 suit-spade">
+                  <Check class="h-3 w-3" />
+                </span>
+                {row.with}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
