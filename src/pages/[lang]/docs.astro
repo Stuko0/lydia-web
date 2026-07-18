@@ -1,9 +1,8 @@
 ---
 import Layout from "../../components/Layout.astro";
-import { FloatingOrbs } from "../../components/FloatingOrbs";
-import { ScrollReveal } from "../../components/ScrollReveal";
 import { InstallCommand } from "../../components/InstallCommand";
-import { BookOpen, ArrowRight, Terminal, Heart, Sparkles, Globe, Shield, Code, Clock } from "lucide-react";
+import { ScrollReveal } from "../../components/ScrollReveal";
+import { BookOpen, Terminal, Globe, Shield, Code, Clock, Sparkles, Heart, ArrowRight } from "lucide-react";
 import { getT } from "../../i18n.server";
 
 export const getStaticPaths = () => [{ params: { lang: "es" } }, { params: { lang: "en" } }, { params: { lang: "it" } }];
@@ -14,136 +13,199 @@ const t = getT(lng);
 const title = `${t.docs.title} — Lydia Agent`;
 
 const sections = [
-  { title: t.docs.quickstart, href: "#quickstart" },
-  { title: t.docs.install, href: "#install" },
-  { title: t.docs.provider, href: "#provider" },
-  { title: t.docs.gateway, href: "#gateway" },
-  { title: t.docs.cli, href: "#cli" },
-  { title: t.docs.cron, href: "#cron" },
-  { title: t.docs.skills, href: "#skills" },
+  { title: t.docs.quickstart, href: "#quickstart", suit: "♠" },
+  { title: t.docs.install, href: "#install", suit: "♥" },
+  { title: t.docs.provider, href: "#provider", suit: "♦" },
+  { title: t.docs.gateway, href: "#gateway", suit: "♣" },
+  { title: t.docs.cli, href: "#cli", suit: "♠" },
+  { title: t.docs.cron, href: "#cron", suit: "♥" },
+  { title: t.docs.skills, href: "#skills", suit: "♦" },
 ];
 ---
 
 <Layout title={title}>
+  <!-- Hero -->
   <section class="relative overflow-hidden border-b border-rpm-highlight-low/60 bg-rpm-base py-28">
-    <FloatingOrbs client:load />
-    <div class="absolute inset-0 -z-10 mask-radial-fade bg-[radial-gradient(ellipse_at_top,_var(--color-rpm-foam)_0%,_transparent_50%)] opacity-20" aria-hidden></div>
+    <div class="fabric-pattern"></div>
+    <div class="section-vignette"></div>
+    <div class="glow-orb glow-orb-1" style="background: var(--color-rpm-foam)"></div>
+    <div class="absolute top-20 left-8 text-6xl font-bold text-rpm-foam/6 select-none hidden md:block" aria-hidden>♦</div>
+    <div class="absolute bottom-20 right-8 text-6xl font-bold text-rpm-gold/6 select-none hidden md:block" aria-hidden>♣</div>
+
     <div class="relative mx-auto max-w-4xl px-6 text-center">
-      <ScrollReveal client:visible>
-        <div class="inline-flex items-center gap-2 rounded-full border border-rpm-foam/30 bg-rpm-foam/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-rpm-foam">
-          <BookOpen className="h-3.5 w-3.5" />
-          {t.docs.badge}
-        </div>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={0.1}>
-        <h1 class="mt-6 font-display text-5xl leading-tight text-rpm-text sm:text-6xl text-balance">{t.docs.title}</h1>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={0.2}>
-        <p class="mx-auto mt-6 max-w-2xl text-lg text-rpm-subtle">{t.docs.subtitle}</p>
-      </ScrollReveal>
+      <div class="header-ornate">
+        <span class="suit-diamond">♦</span>
+        <span class="line" style="background: linear-gradient(90deg, transparent, var(--color-rpm-foam))"></span>
+        <span class="suit-club">♣</span>
+        <span class="line" style="background: linear-gradient(90deg, var(--color-rpm-foam), transparent)"></span>
+        <span class="suit-diamond">♦</span>
+      </div>
+      <div class="inline-flex items-center gap-2 rounded-full border border-rpm-foam/30 bg-rpm-foam/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-rpm-foam">
+        <BookOpen class="h-3.5 w-3.5" />
+        {t.docs.badge}
+        <span class="opacity-40" aria-hidden>♦</span>
+      </div>
+      <h1 class="mt-6 font-display text-5xl leading-tight text-rpm-text sm:text-6xl text-balance">{t.docs.title}</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-rpm-subtle">{t.docs.subtitle}</p>
     </div>
   </section>
 
-  <section class="bg-rpm-surface/20 py-24">
+  <!-- Content -->
+  <section class="relative overflow-hidden bg-rpm-surface/20 py-24">
+    <div class="fabric-pattern"></div>
+    <div class="section-vignette"></div>
+
     <div class="mx-auto max-w-7xl px-6">
       <div class="grid gap-8 lg:grid-cols-3">
+        <!-- Sidebar -->
         <div class="lg:col-span-1">
-          <div class="sticky top-24 space-y-3">
-            <h3 class="font-display text-sm uppercase tracking-widest text-rpm-muted">{t.docs.onThisPage}</h3>
+          <div class="card-alice border-rpm-foam/40 bg-rpm-surface/70 p-6 sticky top-24">
+            <span class="suit-watermark suit-diamond">♦</span>
+            <span class="suit-corner suit-corner-tl suit-diamond">♦</span>
+            <span class="suit-corner suit-corner-br suit-diamond">♦</span>
+            <h3 class="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-rpm-muted">{t.docs.onThisPage}</h3>
             <nav class="flex flex-col gap-2">
-              {sections.map((s) => (
-                <a href={s.href} class="text-sm text-rpm-subtle transition hover:text-rpm-iris">{s.title}</a>
+              {sections.map((s, i) => (
+                <a href={s.href} class="group flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-rpm-subtle transition hover:bg-rpm-surface hover:text-rpm-text">
+                  <span class="text-xs opacity-0 transition-opacity group-hover:opacity-60" class:list={[["suit-spade","suit-heart","suit-diamond","suit-club"][i % 4]]}>{s.suit}</span>
+                  {s.title}
+                </a>
               ))}
             </nav>
           </div>
         </div>
 
-        <div class="lg:col-span-2 space-y-16">
+        <!-- Doc content -->
+        <div class="lg:col-span-2 space-y-10">
+
+          <!-- Quickstart -->
           <ScrollReveal client:visible>
-            <div id="quickstart" class="rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8">
-              <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.quickstart}</h2>
-              <p class="mb-6 text-rpm-subtle">Lydia Agent es una CLI multiplataforma escrita en Python. Tras la instalación puedes empezar a lanzar tareas, gestionar skills y conectar gateways.</p>
-              <div class="grid gap-4 sm:grid-cols-3">
-                <div class="rounded-xl bg-rpm-surface/80 p-4 text-center">
-                  <div class="mb-2 flex justify-center text-rpm-iris"><Terminal className="h-6 w-6" /></div>
-                  <p class="text-sm font-medium text-rpm-text">1. Instala</p>
-                </div>
-                <div class="rounded-xl bg-rpm-surface/80 p-4 text-center">
-                  <div class="mb-2 flex justify-center text-rpm-foam"><Globe className="h-6 w-6" /></div>
-                  <p class="text-sm font-medium text-rpm-text">2. Configura</p>
-                </div>
-                <div class="rounded-xl bg-rpm-surface/80 p-4 text-center">
-                  <div class="mb-2 flex justify-center text-rpm-love"><Sparkles className="h-6 w-6" /></div>
-                  <p class="text-sm font-medium text-rpm-text">3. Ejecuta</p>
+            <div id="quickstart" class="card-alice border-suit-spade bg-suit-spade">
+              <span class="suit-watermark suit-spade">♠</span>
+              <span class="suit-corner suit-corner-tl suit-spade">♠</span>
+              <span class="suit-corner suit-corner-br suit-spade">♠</span>
+              <div class="p-8 pt-14">
+                <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.quickstart}</h2>
+                <p class="mb-6 text-sm text-rpm-subtle">Lydia Agent es una CLI multiplataforma escrita en Python. Tras la instalación puedes empezar a lanzar tareas, gestionar skills y conectar gateways.</p>
+                <div class="grid gap-4 sm:grid-cols-3">
+                  <div class="rounded-xl bg-rpm-surface/80 p-4 text-center border border-rpm-highlight-med/40">
+                    <div class="mb-2 flex justify-center text-rpm-iris"><Terminal class="h-6 w-6" /></div>
+                    <p class="text-sm font-medium text-rpm-text">1. Instala</p>
+                  </div>
+                  <div class="rounded-xl bg-rpm-surface/80 p-4 text-center border border-rpm-highlight-med/40">
+                    <div class="mb-2 flex justify-center text-rpm-foam"><Globe class="h-6 w-6" /></div>
+                    <p class="text-sm font-medium text-rpm-text">2. Configura</p>
+                  </div>
+                  <div class="rounded-xl bg-rpm-surface/80 p-4 text-center border border-rpm-highlight-med/40">
+                    <div class="mb-2 flex justify-center text-rpm-love"><Sparkles class="h-6 w-6" /></div>
+                    <p class="text-sm font-medium text-rpm-text">3. Ejecuta</p>
+                  </div>
                 </div>
               </div>
             </div>
           </ScrollReveal>
 
+          <!-- Install -->
           <ScrollReveal client:visible delay={0.1}>
-            <div id="install" class="rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8">
-              <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.install}</h2>
-              <p class="mb-6 text-rpm-subtle">Copia el comando según tu sistema operativo y ejecútalo en la terminal.</p>
-              <InstallCommand client:visible />
+            <div id="install" class="card-alice border-suit-heart bg-suit-heart">
+              <span class="suit-watermark suit-heart">♥</span>
+              <span class="suit-corner suit-corner-tl suit-heart">♥</span>
+              <span class="suit-corner suit-corner-br suit-heart">♥</span>
+              <div class="p-8 pt-14">
+                <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.install}</h2>
+                <p class="mb-6 text-sm text-rpm-subtle">Copia el comando según tu sistema operativo y ejecútalo en la terminal.</p>
+                <InstallCommand client:visible />
+              </div>
             </div>
           </ScrollReveal>
 
+          <!-- Provider -->
           <ScrollReveal client:visible delay={0.15}>
-            <div id="provider" class="rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8">
-              <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.provider}</h2>
-              <p class="mb-4 text-rpm-subtle">Lydia soporta múltiples proveedores a través de OpenRouter, Anthropic, OpenAI y compatibles. Define tu preferencia por CLI:</p>
-              <pre class="overflow-x-auto rounded-xl bg-rpm-surface/90 p-5 text-sm text-rpm-text"><code>{`lydia config set model.provider openrouter
+            <div id="provider" class="card-alice border-suit-diamond bg-suit-diamond">
+              <span class="suit-watermark suit-diamond">♦</span>
+              <span class="suit-corner suit-corner-tl suit-diamond">♦</span>
+              <span class="suit-corner suit-corner-br suit-diamond">♦</span>
+              <div class="p-8 pt-14">
+                <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.provider}</h2>
+                <p class="mb-4 text-sm text-rpm-subtle">Lydia soporta múltiples proveedores a través de OpenRouter, Anthropic, OpenAI y compatibles. Define tu preferencia por CLI:</p>
+                <pre class="overflow-x-auto rounded-xl bg-rpm-base/80 p-5 text-sm text-rpm-text border border-rpm-highlight-med/40"><code>{`lydia config set model.provider openrouter
 lydia config set model.model anthropic/claude-sonnet-4
 lydia config set model.api_key $OPENROUTER_API_KEY`}</code></pre>
+              </div>
             </div>
           </ScrollReveal>
 
+          <!-- Gateway -->
           <ScrollReveal client:visible delay={0.2}>
-            <div id="gateway" class="rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8">
-              <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.gateway}</h2>
-              <p class="mb-4 text-rpm-subtle">Habilita gateways para recibir mensajes o enviar notificaciones. Telegram y Discord funcionan sin servidores adicionales.</p>
-              <div class="space-y-3 font-mono text-sm text-rpm-subtle">
-                <div class="flex items-center gap-3 rounded-lg bg-rpm-surface/80 p-4 border-l-4 border-rpm-iris"><Globe className="h-4 w-4 text-rpm-iris" /><code>lydia config set gateways.telegram true</code></div>
-                <div class="flex items-center gap-3 rounded-lg bg-rpm-surface/80 p-4 border-l-4 border-rpm-foam"><Code className="h-4 w-4 text-rpm-foam" /><code>lydia config set gateways.discord true</code></div>
+            <div id="gateway" class="card-alice border-suit-club bg-suit-club">
+              <span class="suit-watermark suit-club">♣</span>
+              <span class="suit-corner suit-corner-tl suit-club">♣</span>
+              <span class="suit-corner suit-corner-br suit-club">♣</span>
+              <div class="p-8 pt-14">
+                <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.gateway}</h2>
+                <p class="mb-4 text-sm text-rpm-subtle">Habilita gateways para recibir mensajes o enviar notificaciones. Telegram y Discord funcionan sin servidores adicionales.</p>
+                <div class="space-y-3 font-mono text-sm text-rpm-subtle">
+                  <div class="flex items-center gap-3 rounded-lg bg-rpm-base/80 p-4 border border-l-4 border-rpm-iris"><Globe class="h-4 w-4 text-rpm-iris" /><code>lydia config set gateways.telegram true</code></div>
+                  <div class="flex items-center gap-3 rounded-lg bg-rpm-base/80 p-4 border border-l-4 border-rpm-foam"><Code class="h-4 w-4 text-rpm-foam" /><code>lydia config set gateways.discord true</code></div>
+                </div>
               </div>
             </div>
           </ScrollReveal>
 
+          <!-- CLI -->
           <ScrollReveal client:visible delay={0.25}>
-            <div id="cli" class="rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8">
-              <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.cli}</h2>
-              <div class="space-y-4 font-mono text-sm text-rpm-subtle">
-                <div class="flex items-center gap-3 rounded-lg bg-rpm-surface/80 p-4 border-l-4 border-rpm-iris"><Terminal className="h-4 w-4 text-rpm-iris" /><code>lydia config set model.provider openrouter</code></div>
-                <div class="flex items-center gap-3 rounded-lg bg-rpm-surface/80 p-4 border-l-4 border-rpm-rose"><Heart className="h-4 w-4 text-rpm-rose" /><code>lydia skills install github-code-review</code></div>
-                <div class="flex items-center gap-3 rounded-lg bg-rpm-surface/80 p-4 border-l-4 border-rpm-foam"><Sparkles className="h-4 w-4 text-rpm-foam" /><code>lydia cronjob create --name "daily-brief" --schedule "0 9 * * *"</code></div>
+            <div id="cli" class="card-alice border-suit-spade bg-suit-spade">
+              <span class="suit-watermark suit-spade">♠</span>
+              <span class="suit-corner suit-corner-tl suit-spade">♠</span>
+              <span class="suit-corner suit-corner-br suit-spade">♠</span>
+              <div class="p-8 pt-14">
+                <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.cli}</h2>
+                <div class="space-y-4 font-mono text-sm text-rpm-subtle">
+                  <div class="flex items-center gap-3 rounded-lg bg-rpm-base/80 p-4 border border-l-4 border-rpm-iris"><Terminal class="h-4 w-4 text-rpm-iris" /><code>lydia config set model.provider openrouter</code></div>
+                  <div class="flex items-center gap-3 rounded-lg bg-rpm-base/80 p-4 border border-l-4 border-rpm-rose"><Heart class="h-4 w-4 text-rpm-rose" /><code>lydia skills install github-code-review</code></div>
+                  <div class="flex items-center gap-3 rounded-lg bg-rpm-base/80 p-4 border border-l-4 border-rpm-foam"><Sparkles class="h-4 w-4 text-rpm-foam" /><code>lydia cronjob create --name "daily-brief" --schedule "0 9 * * *"</code></div>
+                </div>
               </div>
             </div>
           </ScrollReveal>
 
+          <!-- Cron -->
           <ScrollReveal client:visible delay={0.3}>
-            <div id="cron" class="rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8">
-              <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.cron}</h2>
-              <p class="mb-4 text-rpm-subtle">Programa trabajos recurrentes que ejecuten un prompt, un script o una skill de forma autónoma.</p>
-              <pre class="overflow-x-auto rounded-xl bg-rpm-surface/90 p-5 text-sm text-rpm-text"><code>{`lydia cronjob create --name morning-brief \
+            <div id="cron" class="card-alice border-suit-heart bg-suit-heart">
+              <span class="suit-watermark suit-heart">♥</span>
+              <span class="suit-corner suit-corner-tl suit-heart">♥</span>
+              <span class="suit-corner suit-corner-br suit-heart">♥</span>
+              <div class="p-8 pt-14">
+                <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.cron}</h2>
+                <p class="mb-4 text-sm text-rpm-subtle">Programa trabajos recurrentes que ejecuten un prompt, un script o una skill de forma autónoma.</p>
+                <pre class="overflow-x-auto rounded-xl bg-rpm-base/80 p-5 text-sm text-rpm-text border border-rpm-highlight-med/40"><code>{`lydia cronjob create --name morning-brief \
   --schedule "0 8 * * *" \
   --prompt "Resumen de PRs y tareas pendientes" \
   --deliver telegram`}</code></pre>
+              </div>
             </div>
           </ScrollReveal>
 
+          <!-- Skills -->
           <ScrollReveal client:visible delay={0.35}>
-            <div id="skills" class="rounded-2xl border border-rpm-highlight-med/40 bg-rpm-base/60 p-8">
-              <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.skills}</h2>
-              <p class="mb-6 text-rpm-subtle">Las skills son memoria procedural reutilizable. Puedes instalarlas del registro o crear las tuyas en <code class="rounded bg-rpm-surface px-1 py-0.5 font-mono text-rpm-iris">~/.lydia/skills/</code>.</p>
-              <div class="grid gap-4 sm:grid-cols-2">
-                <div class="rounded-xl bg-rpm-surface/80 p-4"><div class="mb-2 text-rpm-iris"><Shield className="h-5 w-5" /></div><p class="text-sm font-medium text-rpm-text">Seguridad por defecto</p></div>
-                <div class="rounded-xl bg-rpm-surface/80 p-4"><div class="mb-2 text-rpm-foam"><Clock className="h-5 w-5" /></div><p class="text-sm font-medium text-rpm-text">Automatización recurrente</p></div>
+            <div id="skills" class="card-alice border-suit-diamond bg-suit-diamond">
+              <span class="suit-watermark suit-diamond">♦</span>
+              <span class="suit-corner suit-corner-tl suit-diamond">♦</span>
+              <span class="suit-corner suit-corner-br suit-diamond">♦</span>
+              <div class="p-8 pt-14">
+                <h2 class="mb-4 font-display text-2xl text-rpm-text">{t.docs.skills}</h2>
+                <p class="mb-6 text-sm text-rpm-subtle">Las skills son memoria procedural reutilizable. Puedes instalarlas del registro o crear las tuyas en <code class="rounded bg-rpm-surface px-1 py-0.5 font-mono text-rpm-iris">~/.lydia/skills/</code>.</p>
+                <div class="grid gap-4 sm:grid-cols-2">
+                  <div class="rounded-xl bg-rpm-base/80 p-4 border border-rpm-highlight-med/40"><div class="mb-2 text-rpm-iris"><Shield class="h-5 w-5" /></div><p class="text-sm font-medium text-rpm-text">Seguridad por defecto</p></div>
+                  <div class="rounded-xl bg-rpm-base/80 p-4 border border-rpm-highlight-med/40"><div class="mb-2 text-rpm-foam"><Clock class="h-5 w-5" /></div><p class="text-sm font-medium text-rpm-text">Automatización recurrente</p></div>
+                </div>
+                <a href={`/${lng}/features`} class="mt-6 inline-flex items-center gap-2 rounded-full bg-rpm-iris px-5 py-2.5 font-medium text-rpm-base transition hover:bg-rpm-foam">
+                  {t.featurePreview.ctaFeatures} <ArrowRight class="h-4 w-4" />
+                </a>
               </div>
-              <a href={`/${lng}/features`} class="mt-6 inline-flex items-center gap-2 rounded-full bg-rpm-iris px-5 py-2.5 font-medium text-rpm-base transition hover:bg-rpm-foam">
-                {t.featurePreview.ctaFeatures} <ArrowRight className="h-4 w-4" />
-              </a>
             </div>
           </ScrollReveal>
+
         </div>
       </div>
     </div>

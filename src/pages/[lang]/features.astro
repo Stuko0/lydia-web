@@ -1,6 +1,5 @@
 ---
 import Layout from "../../components/Layout.astro";
-import { FloatingOrbs } from "../../components/FloatingOrbs";
 import { ScrollReveal } from "../../components/ScrollReveal";
 import { FeatureCard } from "../../components/FeatureCard";
 import { Sparkles } from "lucide-react";
@@ -12,18 +11,18 @@ const lng = (Astro.currentLocale ?? "es") as "es" | "en" | "it";
 const t = getT(lng);
 
 const allFeatures = [
-  { iconName: "Brain" as const, title: t.features.persistentMemory, desc: t.features.persistentMemoryDesc, color: "iris" as const },
-  { iconName: "Eye" as const, title: t.features.webBrowse, desc: t.features.webBrowseDesc, color: "foam" as const },
-  { iconName: "Heart" as const, title: t.features.creative, desc: t.features.creativeDesc, color: "love" as const },
-  { iconName: "Clock" as const, title: t.features.scheduled, desc: t.features.scheduledDesc, color: "gold" as const },
-  { iconName: "Shield" as const, title: t.features.sandbox, desc: t.features.sandboxDesc, color: "pine" as const },
-  { iconName: "Sparkles" as const, title: t.features.astroIslands, desc: t.features.astroIslandsDesc, color: "rose" as const },
-  { iconName: "Terminal" as const, title: t.features.cli, desc: t.features.cliDesc, color: "iris" as const },
-  { iconName: "Globe" as const, title: t.features.integrations, desc: t.features.integrationsDesc, color: "foam" as const },
-  { iconName: "MessageSquare" as const, title: t.features.contextual, desc: t.features.contextualDesc, color: "love" as const },
-  { iconName: "Music" as const, title: t.features.audio, desc: t.features.audioDesc, color: "gold" as const },
-  { iconName: "Palette" as const, title: t.features.visual, desc: t.features.visualDesc, color: "rose" as const },
-  { iconName: "Code" as const, title: t.features.code, desc: t.features.codeDesc, color: "pine" as const },
+  { iconName: "Brain", title: t.features.persistentMemory, desc: t.features.persistentMemoryDesc },
+  { iconName: "Eye", title: t.features.webBrowse, desc: t.features.webBrowseDesc },
+  { iconName: "Heart", title: t.features.creative, desc: t.features.creativeDesc },
+  { iconName: "Clock", title: t.features.scheduled, desc: t.features.scheduledDesc },
+  { iconName: "Shield", title: t.features.sandbox, desc: t.features.sandboxDesc },
+  { iconName: "Sparkles", title: t.features.astroIslands, desc: t.features.astroIslandsDesc },
+  { iconName: "Terminal", title: t.features.cli, desc: t.features.cliDesc },
+  { iconName: "Globe", title: t.features.integrations, desc: t.features.integrationsDesc },
+  { iconName: "MessageSquare", title: t.features.contextual, desc: t.features.contextualDesc },
+  { iconName: "Music", title: t.features.audio, desc: t.features.audioDesc },
+  { iconName: "Palette", title: t.features.visual, desc: t.features.visualDesc },
+  { iconName: "Code", title: t.features.code, desc: t.features.codeDesc },
 ];
 
 const title = `${t.nav.features} — Lydia Agent`;
@@ -31,31 +30,38 @@ const title = `${t.nav.features} — Lydia Agent`;
 
 <Layout title={title}>
   <section class="relative overflow-hidden border-b border-rpm-highlight-low/60 bg-rpm-base py-28">
-    <FloatingOrbs client:load />
-    <div class="absolute inset-0 -z-10 mask-radial-fade bg-[radial-gradient(ellipse_at_top,_var(--color-rpm-love)_0%,_transparent_50%)] opacity-20" aria-hidden></div>
+    <div class="fabric-pattern"></div>
+    <div class="section-vignette"></div>
+    <div class="glow-orb glow-orb-1" style="background: var(--color-rpm-love)"></div>
+    <div class="absolute top-20 left-8 text-6xl font-bold text-rpm-love/6 select-none hidden md:block" aria-hidden>♥</div>
+    <div class="absolute bottom-20 right-8 text-6xl font-bold text-rpm-gold/6 select-none hidden md:block" aria-hidden>♣</div>
+
     <div class="relative mx-auto max-w-4xl px-6 text-center">
-      <ScrollReveal client:visible>
-        <div class="inline-flex items-center gap-2 rounded-full border border-rpm-love/30 bg-rpm-love/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-rpm-love">
-          <Sparkles className="h-3.5 w-3.5" />
-          {t.featurePreview.badge}
-        </div>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={0.1}>
-        <h1 class="mt-6 font-display text-5xl leading-tight text-rpm-text sm:text-6xl text-balance">{t.nav.features}</h1>
-      </ScrollReveal>
-      <ScrollReveal client:visible delay={0.2}>
-        <p class="mx-auto mt-6 max-w-2xl text-lg text-rpm-subtle">
-          {t.featuresGrid.subtitle}
-        </p>
-      </ScrollReveal>
+      <div class="header-ornate">
+        <span class="suit-heart">♥</span>
+        <span class="line" style="background: linear-gradient(90deg, transparent, var(--color-rpm-love))"></span>
+        <span class="suit-spade">♠</span>
+        <span class="line" style="background: linear-gradient(90deg, var(--color-rpm-love), transparent)"></span>
+        <span class="suit-heart">♥</span>
+      </div>
+      <div class="inline-flex items-center gap-2 rounded-full border border-rpm-love/30 bg-rpm-love/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-rpm-love">
+        <Sparkles class="h-3.5 w-3.5" />
+        {t.featurePreview.badge}
+        <span class="opacity-40" aria-hidden>♥</span>
+      </div>
+      <h1 class="mt-6 font-display text-5xl leading-tight text-rpm-text sm:text-6xl text-balance">{t.nav.features}</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-rpm-subtle">{t.featuresGrid.subtitle}</p>
     </div>
   </section>
 
-  <section class="bg-rpm-surface/20 py-24">
+  <section class="relative overflow-hidden bg-rpm-surface/20 py-24">
+    <div class="fabric-pattern"></div>
+    <div class="section-vignette"></div>
+
     <div class="mx-auto max-w-7xl px-6">
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {allFeatures.map((f, i) => (
-          <FeatureCard client:visible title={f.title} description={f.desc} iconName={f.iconName} color={f.color} index={i} />
+          <FeatureCard client:visible title={f.title} description={f.desc} iconName={f.iconName} index={i} />
         ))}
       </div>
     </div>
