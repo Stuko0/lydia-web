@@ -1,0 +1,45 @@
+---
+import { Download, Apple, Monitor, Terminal } from "lucide-react";
+
+const WIN_EXE_URL = "https://github.com/Stuko0/lydia-agent/releases/download/v0.17.0/Lydia-0.17.0-Setup.exe";
+---
+
+<div class="mt-8 w-full max-w-2xl">
+  <p class="mb-5 text-center text-sm font-medium uppercase tracking-widest text-rpm-muted">
+    <span class="inline-flex items-center gap-2">
+      <span class="h-px w-8 bg-rpm-highlight-med"></span>
+      Or download the desktop app
+      <span class="h-px w-8 bg-rpm-highlight-med"></span>
+    </span>
+  </p>
+  <div class="grid grid-cols-3 gap-3">
+    <!-- macOS → coming soon -->
+    <div class="flex flex-col items-center gap-2 rounded-xl border border-rpm-highlight-med/30 bg-rpm-surface/60 px-4 py-4 opacity-60">
+      <Apple class="h-6 w-6 text-rpm-muted" />
+      <span class="text-xs font-medium text-rpm-muted">macOS</span>
+      <span class="text-[10px] italic text-rpm-muted/60">Proximamente</span>
+    </div>
+
+    <!-- Windows → download -->
+    <a
+      href={WIN_EXE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group flex flex-col items-center gap-2 rounded-xl border border-rpm-iris/40 bg-rpm-iris/10 px-4 py-4 text-rpm-iris transition hover:bg-rpm-iris/20 hover:shadow-lg hover:-translate-y-1"
+    >
+      <Monitor class="h-6 w-6 transition group-hover:-translate-y-0.5" />
+      <span class="text-xs font-medium">Windows</span>
+      <span class="flex items-center gap-1 text-[10px] font-medium">
+        <Download class="h-3 w-3" />
+        Download
+      </span>
+    </a>
+
+    <!-- Linux → coming soon -->
+    <div class="flex flex-col items-center gap-2 rounded-xl border border-rpm-highlight-med/30 bg-rpm-surface/60 px-4 py-4 opacity-60">
+      <Terminal class="h-6 w-6 text-rpm-muted" />
+      <span class="text-xs font-medium text-rpm-muted">Linux</span>
+      <span class="text-[10px] italic text-rpm-muted/60">Proximamente</span>
+    </div>
+  </div>
+</div>
